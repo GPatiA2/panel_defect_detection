@@ -4,6 +4,21 @@ import torchvision
 import torch.nn as nn
 import nets
 import torch.optim.lr_scheduler as lr_scheduler
+from argparse import Namespace
+import json
+
+class NeuralClassifierLoader():
+
+    def __init__(self, options_file, weights):
+        
+        with open(options_file, 'r') as f:
+            options = json.load(f) 
+        
+        self.opt = Namespace(options)
+        self.weight_file = weights
+
+    def load_classifier(self):
+        return PannelClassifier.load_checkpoint(self.weight_file, self.opt)
 
 class PannelClassifier(pl.LightningModule):
 

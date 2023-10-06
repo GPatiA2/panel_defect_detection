@@ -17,26 +17,15 @@ import torchvision.models
 
 class PannelClassificationDataset(Dataset):
 
-    defects = {
-        "bypass"          : 0,
-        "cell low"        : 1,
-        "multicell low"   : 2,
-        "vegetation"      : 3,
-        "dirt"            : 4,
-        "missing"         : 5,
-        "module"          : 6,
-        "cell high"       : 7,
-        "multicell high"  : 8,
-        "cell medium"     : 9,
-        "multicell medium": 10,
-        "healthy"         : 11,
-    }   
-
     def __init__(self, opt, transforms):
 
         self.opt        = opt
 
         self.dataset_dir = opt.dataset_dir
+        self.dataset_dir = os.path.join(self.dataset_dir, 'train')
+
+        with open(os.path.join(self.dataset_dir, 'labels.json'), 'r') as f:
+            self.defects = json.load(f)
 
         self.training_frac = opt.training_frac
         self.validation_frac = opt.validation_frac 

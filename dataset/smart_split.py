@@ -7,9 +7,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 from math import ceil
 import sklearn.model_selection as sk
+import argparse
+
+def options():
+
+    parser = argparse.ArgumentParser(description='Split dataset into train and test')
+    parser.add_argument('--test_fraction', type=float, default=0.2, help='Fraction of the dataset to be used as test set')
+    parser.add_argument('--output_dir', type=str, default='dataset/smart_merged', help='Output directory')
+
+opt = options()
 
 # Take the first argument as test fraction
-test_fraction = float(sys.argv[1])
+test_fraction = opt.test_fraction
+out_dir = opt.output_dir
 
 with open(os.path.join('dataset', 'bad', 'tags.json'), 'r') as f:
     bad_tags = json.load(f)
@@ -45,23 +55,29 @@ X_train, X_test, y_train, y_test = sk.train_test_split(X, Y, test_size=test_frac
 train_ds = [{"name" : X_train[i], "label" : y_train[i]} for i in range(len(X_train))]
 test_ds   = [{"name" : X_test[i], "label" : y_test[i]} for i in range(len(X_test))]
 
-os.makedirs('dataset/smart_merged', exist_ok=True)
+os.makedirs('dataset/' + out_dir, exist_ok=True)
 
-os.makedirs('dataset/smart_merged/train', exist_ok=True)
-with open(os.path.join('dataset','smart_merged','train','tags.json'), 'w') as f:
+with open(os.path.join('dataset', out_dir ,'labels.json'), 'w') as f:
+    labels_dict = {k : v for k,v in enumerate(bad_tags_filtered)}
+    json.dump(labels_dict, f, indent=4)
+
+os.makedirs('dataset/'+ out_dir, '/train', exist_ok=True)
+
+with open(os.path.join('dataset', out_dir ,'train','tags.json'), 'w') as f:
     json.dump(train_ds, f, indent=4)
 
 for di in train_ds:
     path = os.path.join('dataset', 'bad', di["name"]) if 'bad' in di["name"] else os.path.join('dataset', 'healthy', di["name"])
-    cv2.imwrite(os.path.join('dataset/smart_merged/train', di["name"]), cv2.imread(path))
+    cv2.imwrite(os.path.join('dataset/' + out_dir + '/train', di["name"]), cv2.imread(path))
 
 
 
 
-os.makedirs('dataset/smart_merged/test', exist_ok=True)
-with open(os.path.join('dataset','smart_merged','test','tags.json'), 'w') as f:
+os.makedirs('dataset/' + out_dir + '/test', exist_ok=True)
+
+with open(os.path.join('dataset', out_dir,'test','tags.json'), 'w') as f:
     json.dump(test_ds, f, indent=4)
 
 for di in test_ds:
     path = os.path.join('dataset', 'bad', di["name"]) if 'bad' in di["name"] else os.path.join('dataset', 'healthy', di["name"])
-    cv2.imwrite(os.path.join('dataset/smart_merged/test', di["name"]), cv2.imread(path))
+    cv2.imwrite(os.path.join('dataset/' + out_dir + '/test', di["name"]), cv2.imread(path))

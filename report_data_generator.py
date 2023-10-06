@@ -12,53 +12,8 @@ from matplotlib import pyplot as plt
 import matplotlib.patches as patches
 import os
 import pylab
-
 import torch
-
-
-class COPILOTDataGenerator():
-
-    CV2_COLORS = [
-        (0,255,0),
-        (255,0,0),
-        (0,0,255),
-        (255,255,0),
-        (0,255,255),
-        (255,0,255)
-    ]
-
-    PLT_COLORS = [
-        (0,1,0),
-        (1,0,0),
-        (0,0,1),
-        (1,1,0),
-        (0,1,1),
-        (1,0,1)
-    ]
-
-    def __init__(self, detector, classifier, chopper):
-
-        self.detector   = detector
-        self.classifier = classifier
-        self.chopper    = chopper
-
-
-    def process_image(self, im):
-
-        # Dividir imagen a mitad
-        rgb_image = im[:, :im.shape[1]//2, :]
-        ir_image  = im[:, im.shape[1]//2:, :]
-
-        detections = self.detector.detect(ir_image)
-
-        crops   = self.chopper.efficient_chop(ir_image, detections)
-
-        for c in crops:
-            
-            # Classifier tiene que hacer el procesamiento de la termica
-            pred = self.classifier.eval(c[1])
-
-        return pred
+from sklearn.preprocessing import OneHotEncoder
 
 
 class ReportDataGenerator():
