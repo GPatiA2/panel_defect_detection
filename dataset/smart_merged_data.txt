@@ -1,0 +1,13 @@
+cell low: 214
+cell medium: 79
+healthy: 160
+multicell low: 197
+multicell medium: 63
+vegetation: 114
+_________________________
+cell low, = 0
+cell medium, = 1
+healthy, = 2
+multicell low, = 3
+multicell medium, = 4
+vegetation, = 5
