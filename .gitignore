@@ -1,0 +1,13 @@
+enel_samples
+tfg-javi
+*.pdf
+UTE-Guanche-Tablero_2022.pdf
+datadron
+*log.txt
+*.JPG
+*.png
+datadron*
+dataset
+results
+dataset_generation/datadron_pdf
+dataset_generation/ImagesWithDefects
