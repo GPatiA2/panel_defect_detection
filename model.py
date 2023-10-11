@@ -14,11 +14,14 @@ class NeuralClassifierLoader():
         with open(options_file, 'r') as f:
             options = json.load(f) 
         
-        self.opt = Namespace(options)
+        self.opt = Namespace(**options)
+        print(self.opt)
         self.weight_file = weights
 
     def load_classifier(self):
-        return PannelClassifier.load_checkpoint(self.weight_file, self.opt)
+        clasifier = PannelClassifier.load_from_checkpoint(self.weight_file, opt=self.opt)
+        clasifier.freeze()
+        return clasifier
 
 class PannelClassifier(pl.LightningModule):
 

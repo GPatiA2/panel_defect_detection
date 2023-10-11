@@ -14,70 +14,73 @@ def options():
     parser = argparse.ArgumentParser(description='Split dataset into train and test')
     parser.add_argument('--test_fraction', type=float, default=0.2, help='Fraction of the dataset to be used as test set')
     parser.add_argument('--output_dir', type=str, default='dataset/smart_merged', help='Output directory')
+    opt = parser.parse_args()
+    return opt
 
-opt = options()
+if __name__ == '__main__':
 
-# Take the first argument as test fraction
-test_fraction = opt.test_fraction
-out_dir = opt.output_dir
+    opt = options()
 
-with open(os.path.join('dataset', 'bad', 'tags.json'), 'r') as f:
-    bad_tags = json.load(f)
+    # Take the first argument as test fraction
+    test_fraction = opt.test_fraction
+    out_dir = opt.output_dir
 
-with open(os.path.join('dataset','healthy', 'tags.json'), 'r') as f2:
-    healthy_tags = json.load(f2)
+    with open(os.path.join('bad', 'tags.json'), 'r') as f:
+        bad_tags = json.load(f)
 
-not_enough_samples_of = ["dirt", "module", "missing", "multicell high", "cell high", "bypass"]
+    with open(os.path.join('healthy', 'tags.json'), 'r') as f2:
+        healthy_tags = json.load(f2)
 
-bad_tags_filtered = list(filter(lambda x: x["label"] not in not_enough_samples_of, bad_tags))
+    not_enough_samples_of = ["dirt", "module", "missing", "multicell high", "cell high", "bypass"]
 
-shuffle(healthy_tags)
+    bad_tags_filtered = list(filter(lambda x: x["label"] not in not_enough_samples_of, bad_tags))
 
-healthy_tags = healthy_tags[:200]
+    shuffle(healthy_tags)
 
-merged = []
-for it in bad_tags_filtered:
-    merged.append(it)
+    healthy_tags = healthy_tags[:200]
 
-for it in healthy_tags:
-    merged.append(it)
+    merged = []
+    for it in bad_tags_filtered:
+        merged.append(it)
 
-shuffle(merged)
+    for it in healthy_tags:
+        merged.append(it)
 
-X = [it["name"] for it in merged]
-Y = [it["label"] for it in merged]
+    shuffle(merged)
 
-print("LEN X "  + str(len(X)))
-print("LEN Y "  + str(len(Y)))
+    X = [it["name"] for it in merged]
+    Y = [it["label"] for it in merged]
 
-X_train, X_test, y_train, y_test = sk.train_test_split(X, Y, test_size=test_fraction, shuffle=True, stratify=Y)
+    print("LEN X "  + str(len(X)))
+    print("LEN Y "  + str(len(Y)))
 
-train_ds = [{"name" : X_train[i], "label" : y_train[i]} for i in range(len(X_train))]
-test_ds   = [{"name" : X_test[i], "label" : y_test[i]} for i in range(len(X_test))]
+    X_train, X_test, y_train, y_test = sk.train_test_split(X, Y, test_size=test_fraction, shuffle=True, stratify=Y)
 
-os.makedirs('dataset/' + out_dir, exist_ok=True)
+    train_ds = [{"name" : X_train[i], "label" : y_train[i]} for i in range(len(X_train))]
+    test_ds   = [{"name" : X_test[i], "label" : y_test[i]} for i in range(len(X_test))]
 
-with open(os.path.join('dataset', out_dir ,'labels.json'), 'w') as f:
-    labels_dict = {k : v for k,v in enumerate(bad_tags_filtered)}
-    json.dump(labels_dict, f, indent=4)
+    os.makedirs(os.path.join(out_dir), exist_ok=True)
 
-os.makedirs('dataset/'+ out_dir, '/train', exist_ok=True)
+    with open(os.path.join(out_dir ,'labels.json'), 'w') as f:
+        labels_dict = {k : v for k,v in enumerate(bad_tags_filtered)}
+        labels_dict = list(set([it[1]['label'] for it in labels_dict.items()]))
+        labels_dict.append('healthy')
+        json.dump(labels_dict, f, indent=4)
 
-with open(os.path.join('dataset', out_dir ,'train','tags.json'), 'w') as f:
-    json.dump(train_ds, f, indent=4)
+    os.makedirs(os.path.join(out_dir, 'train'), exist_ok=True)
 
-for di in train_ds:
-    path = os.path.join('dataset', 'bad', di["name"]) if 'bad' in di["name"] else os.path.join('dataset', 'healthy', di["name"])
-    cv2.imwrite(os.path.join('dataset/' + out_dir + '/train', di["name"]), cv2.imread(path))
+    with open(os.path.join(out_dir ,'train','tags.json'), 'w') as f:
+        json.dump(train_ds, f, indent=4)
 
+    for di in train_ds:
+        path = os.path.join('bad', di["name"]) if 'bad' in di["name"] else os.path.join('healthy', di["name"])
+        cv2.imwrite(os.path.join(out_dir + '/train', di["name"]), cv2.imread(path))
 
+    os.makedirs(os.path.join(out_dir , 'test'), exist_ok=True)
 
+    with open(os.path.join(out_dir,'test','tags.json'), 'w') as f:
+        json.dump(test_ds, f, indent=4)
 
-os.makedirs('dataset/' + out_dir + '/test', exist_ok=True)
-
-with open(os.path.join('dataset', out_dir,'test','tags.json'), 'w') as f:
-    json.dump(test_ds, f, indent=4)
-
-for di in test_ds:
-    path = os.path.join('dataset', 'bad', di["name"]) if 'bad' in di["name"] else os.path.join('dataset', 'healthy', di["name"])
-    cv2.imwrite(os.path.join('dataset/' + out_dir + '/test', di["name"]), cv2.imread(path))
+    for di in test_ds:
+        path = os.path.join('bad', di["name"]) if 'bad' in di["name"] else os.path.join('healthy', di["name"])
+        cv2.imwrite(os.path.join(out_dir + '/test', di["name"]), cv2.imread(path))

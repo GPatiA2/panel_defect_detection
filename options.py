@@ -18,6 +18,7 @@ def OptionParserClassifier():
     parser.add_argument('--epochs', type=int, help='Number of epochs', default = 100)
     parser.add_argument('--sched', type =bool, help='Use scheduler', default = False)
 
+    parser.add_argument('--in_res', type=tuple, help='Input resolution', default = (70,100), nargs='+')
     parser.add_argument('--hflip_chance', type=float, help='Chance to perform an horizontal flip when data augmentating', default = 0)
     parser.add_argument('--vflip_chance', type=float, help='Chance to perform a  vertical flip when data augmentating', default = 0)
     parser.add_argument('--sat_chance', type=float, help='Chance to perform saturarion color jitter when data augmentating', default=0)
@@ -38,6 +39,8 @@ def OptionParserClassifier():
     opt = parser.parse_args()
     opt.pretrained = opt.init_method == 'pretrained'
     opt.validation_frac = 1 - opt.training_frac
+    opt.in_res = tuple(opt.in_res)
+    opt.in_res = [toint(item) for item in opt.in_res]
 
     assert 0 < opt.training_frac < 1,   "[!] Training fraction of the dataset must be a value higher than 0 and lower than 1"
 
@@ -49,6 +52,12 @@ def OptionParserClassifier():
 
     print(opt)
     return opt
+
+def toint(strtuple):
+    num = 0
+    for i in range(len(strtuple)):
+        num += 10 ** (len(strtuple) - 1) * int(strtuple[i])
+    return num
 
 def OptionParserTestClassifier():
 

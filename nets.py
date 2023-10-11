@@ -60,8 +60,7 @@ class MobileNetV2Classifier(nn.Module):
 
         else:
             self.model = torchvision.models.mobilenet_v2(num_classes=self.num_classes)
-            self.preprocess = torchvision.transforms.Compose([torchvision.transforms.ToTensor(),
-                                                              torchvision.transforms.Resize(self.in_res),
+            self.preprocess = torchvision.transforms.Compose([torchvision.transforms.Resize(self.in_res),
                                                               torchvision.transforms.Grayscale(num_output_channels=3)])
 
     def transforms(self):

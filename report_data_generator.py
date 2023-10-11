@@ -13,41 +13,11 @@ import matplotlib.patches as patches
 import os
 import pylab
 import torch
-from sklearn.preprocessing import OneHotEncoder
-
+from sklearn.preprocessing import LabelBinarizer
 
 class ReportDataGenerator():
 
-    CV2_COLORS = [
-        (0,255,0),
-        (255,0,0),
-        (0,0,255),
-        (255,255,0),
-        (0,255,255),
-        (255,0,255)
-    ]
-
-    PLT_COLORS = [
-        (0,1,0),
-        (1,0,0),
-        (0,0,1),
-        (1,1,0),
-        (0,1,1),
-        (1,0,1)
-    ]
-
-    opt = Namespace(
-        num_classes = 6,
-        model       = 'MobileNetV2',
-        pretrained  = False,
-        criterion   = 'CE',
-        init_method = 'none',
-        in_res      = (70,100)
-    )
-
-    def __init__(self, detector_weights, classifier_weights, tag_path, res, imgs_out_dir, test = False):
-
-        self.detector = PannelDetector(weights_file = detector_weights)
+    def __init__(self, detector, classifier, chopper, tag_path, imgs_out_dir, test = False):
 
         self.test = test
 
@@ -56,14 +26,30 @@ class ReportDataGenerator():
         with open(tag_path, 'r') as f:
             self.classes = json.load(f)
 
-        self.chopper = PannelChopper(res)
+        self.plt_colors = self.labels_as_colors(self.classes)
+        print(self.plt_colors)
+        self.cv2_colors = [[it[i] * 255 for i in range(len(it))] for it in self.plt_colors]
+        self.rects = [patches.Patch(color=self.plt_colors[i], 
+                                label=self.classes[i]) for i in range(len(self.cv2_colors))]
 
-        self.classifier = PannelClassifier.load_from_checkpoint(classifier_weights, opt = self.opt)
-        self.classifier.freeze()
+        self.detector   = detector
+        self.classifier = classifier
+        self.chopper    = chopper
 
-        self.rects = [patches.Patch(color=self.PLT_COLORS[i], 
-                                label=self.classes[str(i)][0]) for i in range(len(self.CV2_COLORS))]
-    
+    def labels_as_colors(self, lb):
+
+        lb_c = [bin(idx + 1) for idx, val in enumerate(lb)]
+        lb_c = [lb_c[idx][2:] for idx, val in enumerate(lb_c)]
+        
+        max_len = max(lb_c, key = lambda x : len(x))
+        lb_color_corrected = []
+        for it in lb_c:
+            while len(it) < len(max_len):
+                it = '0' + it
+            lb_color_corrected.append(it)
+
+        lb_c = [[int(it[i]) for i in range(len(it))] for it in lb_color_corrected]
+        return lb_c
 
     def read_images(self,path):
         
@@ -96,7 +82,7 @@ class ReportDataGenerator():
 
         return path
 
-    def generate_report_data(self, path_to_images):
+    def generate_report_data(self, path_to_images, show_detections = False, show_crops = False):
 
         report_images = []
         defect_count  = {}
@@ -107,13 +93,30 @@ class ReportDataGenerator():
 
         for im in images:
 
-            defect_in_image = { k[1][0] : 0  for k in self.classes.items()}
+            defect_in_image = { k : 0  for k in self.classes}
 
             im2 = im[1].copy()
 
             detections = self.detector.detect(im[1])
 
-            crops   = self.chopper.chop(im[1], detections)
+            conts = [np.array(d['segmentation'], dtype=np.int32) for d in detections]
+    
+            if show_detections:
+                print(len(conts))
+                print(conts[0].dtype)
+                print(conts[0])
+
+                im3 = im2.copy()
+                im3 = cv2.drawContours(im3, conts, -1, (0,255,0), 2)
+                cv2.imshow("im3", im3)
+                cv2.waitKey(0)
+
+            crops   = self.chopper.efficient_chop(im[1], detections)
+
+            if show_crops:
+                for c in crops:
+                    cv2.imshow("crop", c[1])
+                    cv2.waitKey(0)
 
             i = 0
             for c in crops:
@@ -127,15 +130,15 @@ class ReportDataGenerator():
                     pred = self.classifier.predict_step(img, i)
                     pred = np.argmax(Softmax(dim = 0)(pred))
                 
-                cv2.drawContours(im2, c[0], -1, self.CV2_COLORS[pred], 2)
+                im2 = cv2.drawContours(im2, c[0], -1, self.cv2_colors[pred], 2)
                 i += 1
 
-                if self.classes[str(pred.item())][0] not in defect_count.keys():
-                    defect_count[self.classes[str(pred.item())][0]] = 0
+                if self.classes[pred.item()] not in defect_count.keys():
+                    defect_count[self.classes[pred.item()]] = 0
 
-                defect_count[self.classes[str(pred.item())][0]] += 1
+                defect_count[self.classes[pred.item()]] += 1
 
-                defect_in_image[self.classes[str(pred.item())][0]] += 1
+                defect_in_image[self.classes[pred.item()]] += 1
 
             pth = os.path.join(self.out_dir, im[0])
 

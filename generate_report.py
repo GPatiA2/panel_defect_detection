@@ -1,4 +1,7 @@
 from report_data_generator import ReportDataGenerator
+from pannel_detector import PannelDetector
+from pannel_chopper import PannelChopper
+from model import PannelClassifier, NeuralClassifierLoader
 
 from pylatex import Document, Section, Subsection, Tabular, Math, TikZ, Axis, \
     Plot, Figure, Matrix, Alignat, Command, LongTable, MultiColumn
@@ -13,10 +16,13 @@ COLORS = [
     "orange"
 ]
 
-gen = ReportDataGenerator('model_final_thermal.pth',
-                          'classifier_test.ckpt', 'results/Try1/labels.json', (70,100), 'latex_imgs', test=True)
+detector   = PannelDetector('weights/model_final_thermal.pth')
+chopper    = PannelChopper((70,100))
+classifier = NeuralClassifierLoader('results/try0/opt.json','results/try0/logs/lightning_logs/version_0/checkpoints/epoch=49-step=600.ckpt').load_classifier()
 
-report_data = gen.generate_report_data('dataset_generation/datadron_real')
+gen = ReportDataGenerator(detector, classifier, chopper, 'dataset/smart_merged2/labels.json', 'latex_imgs', test=True)
+
+report_data = gen.generate_report_data('datadron_real')
 images, total_defect_count = report_data
 legend_path  = gen.save_legend_image()
 

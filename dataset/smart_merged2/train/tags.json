@@ -1,0 +1,3310 @@
+[
+    {
+        "name": "DJI_20220610132646_0302_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610135209_0115_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610135106_0079_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132623_0285_T_bad_3.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610135044_0066_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610142235_0531_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610131959_0064_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133755_0719_T_bad_19.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133428_0593_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134135_0851_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133822_0731_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133439_0599_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610141835_0390_T_bad_1.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610134115_0838_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133533_0629_T_bad_13.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133503_0614_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610131910_0037_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141841_0394_T_bad_1.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132623_0285_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610131959_0064_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132840_0375_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133737_0707_T_healthy_3.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132623_0285_T_bad_7.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610142122_0486_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141841_0394_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610141607_0296_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134223_0875_T_healthy_3.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132745_0337_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610131923_0045_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610131910_0037_T_bad_2.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610132533_0259_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133534_0630_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133908_0763_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132944_0414_T_bad_3.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610141453_0250_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133024_0441_T_bad_1.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133014_0435_T_bad_0.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610134318_0913_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610140028_0036_T_bad_1.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133147_0494_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132012_0074_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132012_0074_T_bad_3.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610141404_0214_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610134146_0859_T_bad_6.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133526_0624_T_bad_2.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610132426_0222_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610142126_0489_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132533_0259_T_bad_4.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132615_0281_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610135054_0072_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610135058_0074_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610141648_0319_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133651_0676_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132318_0182_T_bad_2.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610134304_0903_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610142117_0482_T_bad_1.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133147_0494_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133904_0760_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141412_0220_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132535_0261_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132341_0191_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132310_0176_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610135154_0105_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141915_0413_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132542_0265_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132615_0281_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132756_0345_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133829_0735_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132856_0386_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133719_0695_T_bad_0.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610131927_0048_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141604_0294_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610135058_0074_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133844_0746_T_bad_4.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133711_0689_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141944_0433_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133706_0686_T_bad_0.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610133533_0629_T_bad_15.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133836_0740_T_bad_8.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132507_0243_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610141655_0324_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132252_0163_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132514_0247_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133755_0719_T_bad_10.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610141608_0297_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133956_0791_T_bad_4.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132538_0263_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610142112_0478_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132158_0136_T_bad_5.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133613_0655_T_bad_5.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134155_0864_T_bad_5.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610134054_0824_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133446_0603_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610141830_0386_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133557_0644_T_bad_6.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133908_0763_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132533_0259_T_bad_8.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610141831_0387_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132844_0378_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132638_0296_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610141947_0435_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610134146_0859_T_bad_12.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132913_0392_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610142114_0480_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133613_0655_T_bad_13.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133459_0612_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132821_0361_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132008_0071_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610141607_0296_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610135157_0106_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132948_0417_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132935_0408_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132710_0319_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610131900_0034_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610131923_0045_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610142130_0492_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132346_0194_T_healthy_3.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610134902_0004_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133533_0629_T_bad_16.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132401_0204_T_bad_4.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132623_0285_T_bad_4.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610134148_0861_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610141335_0202_T_bad_0.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610135142_0096_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133424_0590_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132008_0071_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133137_0487_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132549_0269_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610131927_0048_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610135101_0075_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610134223_0875_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610134111_0835_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132502_0239_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141642_0314_T_bad_1.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610133903_0759_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132553_0272_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133424_0590_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133755_0719_T_bad_18.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133533_0629_T_bad_14.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610134022_0809_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610135115_0084_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610135149_0101_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132848_0380_T_healthy_3.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610142137_0497_T_bad_3.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610133526_0624_T_bad_6.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610141634_0309_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133651_0676_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133903_0759_T_bad_1.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610134146_0859_T_bad_4.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610132238_0153_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133534_0630_T_healthy_3.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133836_0740_T_bad_16.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610132151_0131_T_bad_8.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133547_0638_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132943_0413_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610141612_0300_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610141947_0435_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133658_0680_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610135106_0079_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133410_0580_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610141853_0403_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610135940_0012_T_bad_3.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133658_0680_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132800_0347_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133613_0655_T_bad_8.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610141934_0426_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132351_0198_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132533_0259_T_bad_6.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133940_0780_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132132_0117_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610134036_0818_T_bad_13.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133836_0740_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610141445_0244_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132432_0226_T_bad_3.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133651_0676_T_bad_0.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610132514_0247_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133951_0787_T_bad_4.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141516_0259_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133618_0659_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133956_0791_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134217_0871_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610141634_0309_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133618_0659_T_bad_4.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133628_0666_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133613_0655_T_bad_10.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610132816_0358_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132410_0211_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132544_0266_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133027_0443_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133555_0643_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132310_0176_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132401_0204_T_bad_6.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610134318_0913_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132800_0347_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132657_0309_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133840_0743_T_bad_4.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132015_0076_T_bad_5.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132931_0405_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132929_0404_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133859_0756_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133411_0581_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133503_0614_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133651_0676_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610134155_0864_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133533_0629_T_bad_9.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132829_0367_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610141609_0298_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133533_0629_T_bad_6.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134151_0862_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133503_0614_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610134036_0818_T_bad_6.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132238_0153_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610141924_0420_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133613_0655_T_bad_17.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133739_0708_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133739_0708_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133557_0644_T_bad_12.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610132618_0282_T_bad_4.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610135115_0084_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132158_0136_T_bad_2.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132135_0119_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610141609_0298_T_bad_3.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132630_0290_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610142112_0478_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132147_0128_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610134131_0848_T_bad_6.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610134022_0809_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134140_0855_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133836_0740_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132429_0224_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610135044_0066_T_healthy_3.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610142125_0488_T_bad_0.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610134119_0840_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610135940_0012_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132432_0226_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132635_0294_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132657_0309_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610142226_0525_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610142017_0455_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133526_0624_T_bad_0.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610131955_0061_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133011_0433_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132618_0282_T_bad_1.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133446_0603_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610134858_0002_T_bad_0.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610133904_0760_T_bad_4.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610133745_0712_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141555_0287_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132558_0275_T_bad_4.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610132535_0261_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133613_0655_T_bad_15.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132315_0180_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610134022_0809_T_bad_1.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610141724_0346_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133904_0760_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132401_0204_T_bad_2.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610131923_0045_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133618_0659_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132429_0224_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133706_0686_T_bad_1.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610135054_0072_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133134_0485_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610141351_0206_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133411_0581_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610134143_0857_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610141523_0264_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133439_0599_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132944_0414_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133844_0746_T_bad_2.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132015_0076_T_bad_4.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610135050_0070_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610135117_0086_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133948_0786_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132844_0378_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610141555_0287_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610134234_0882_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133613_0655_T_bad_9.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133836_0740_T_bad_18.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132933_0407_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610142209_0512_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133613_0655_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133711_0689_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132821_0361_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133913_0767_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141354_0208_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610134015_0804_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132955_0422_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610135029_0056_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133444_0602_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132304_0172_T_bad_4.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133937_0778_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610134036_0818_T_bad_5.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134312_0908_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133129_0481_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132155_0134_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133755_0719_T_bad_11.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132346_0194_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133755_0719_T_bad_13.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133833_0738_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133125_0478_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132012_0074_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610141835_0390_T_bad_4.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133836_0740_T_bad_10.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133557_0644_T_bad_7.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610133020_0438_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132320_0183_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133507_0617_T_bad_3.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132848_0380_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132549_0269_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132913_0392_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132533_0259_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610141922_0418_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133526_0624_T_bad_7.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610133829_0735_T_bad_3.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134140_0855_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133613_0655_T_bad_6.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610131927_0048_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141408_0217_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610141549_0284_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133526_0624_T_bad_4.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610131923_0045_T_bad_3.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132933_0407_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610141950_0436_T_bad_3.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610134146_0859_T_bad_10.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610133122_0476_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610134151_0862_T_bad_4.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132135_0119_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133956_0791_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134022_0809_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132829_0367_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132538_0263_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134316_0911_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132354_0200_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141830_0386_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610141559_0290_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133755_0719_T_bad_5.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132155_0134_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133755_0719_T_bad_15.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610132618_0282_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132143_0125_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132555_0274_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610141401_0212_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132631_0291_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133114_0470_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132558_0275_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141835_0390_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133557_0644_T_bad_8.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134115_0838_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610141553_0286_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133937_0778_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133024_0441_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610142116_0481_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133742_0710_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133539_0633_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610134036_0818_T_bad_8.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610133904_0760_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610131959_0064_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132252_0163_T_bad_4.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132015_0076_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132502_0239_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133844_0746_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610131930_0050_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132533_0259_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133125_0478_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610141354_0208_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132549_0269_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133533_0629_T_bad_8.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134155_0864_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132813_0356_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610134028_0812_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610135054_0072_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132015_0076_T_bad_6.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132458_0237_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133411_0581_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610141935_0427_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132429_0224_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133613_0655_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132244_0158_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610135940_0012_T_bad_4.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132354_0200_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133951_0787_T_bad_3.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133255_0535_T_bad_1.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132132_0117_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610134131_0848_T_bad_3.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610142112_0478_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132401_0204_T_bad_1.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610132318_0182_T_bad_3.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610132132_0117_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133655_0678_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133539_0633_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132130_0115_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133913_0767_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133011_0433_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132615_0281_T_bad_5.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133613_0655_T_bad_11.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610135123_0090_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133755_0719_T_bad_16.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134131_0848_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610135041_0064_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132544_0266_T_bad_4.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132401_0204_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132646_0302_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132558_0275_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133742_0710_T_bad_1.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610141549_0284_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133533_0629_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133836_0740_T_bad_17.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134131_0848_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132929_0404_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133439_0599_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610131959_0064_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133020_0438_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610142141_0500_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610141401_0212_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133456_0610_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610134119_0840_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610135153_0104_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133745_0712_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132158_0136_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133836_0740_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133143_0491_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132502_0239_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133903_0759_T_bad_2.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133137_0487_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132135_0119_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132638_0296_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133658_0680_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610142117_0482_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132429_0224_T_bad_4.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610131900_0034_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133255_0535_T_bad_0.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610133446_0603_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133428_0593_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610131922_0044_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133446_0603_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610141915_0413_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132132_0117_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610134146_0859_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610141445_0244_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610134312_0908_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133711_0689_T_bad_2.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610131900_0034_T_bad_4.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132535_0261_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134015_0804_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610140028_0036_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132816_0358_T_bad_0.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610134036_0818_T_bad_4.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134131_0848_T_bad_4.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610131955_0061_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133539_0633_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132935_0408_T_bad_1.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610135940_0012_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610142223_0523_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610135159_0108_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610134950_0035_T_bad_1.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610134950_0035_T_bad_3.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610141928_0423_T_bad_2.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132015_0076_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133612_0654_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610135050_0070_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133840_0743_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133755_0719_T_bad_8.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132158_0136_T_bad_4.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610132432_0226_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133742_0710_T_bad_0.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610131959_0064_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132350_0197_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610134015_0804_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610134054_0824_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610142210_0513_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132955_0422_T_bad_3.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133533_0629_T_bad_11.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610131900_0034_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132544_0266_T_bad_3.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133439_0599_T_bad_3.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133845_0747_T_bad_2.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610134155_0864_T_bad_4.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610133844_0746_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610141934_0426_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133822_0731_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133534_0630_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134312_0908_T_healthy_3.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133533_0629_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133951_0787_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133904_0760_T_bad_5.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610141759_0364_T_bad_3.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610141404_0214_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132419_0217_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133533_0629_T_bad_17.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610141612_0300_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133836_0740_T_bad_13.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610135058_0074_T_bad_3.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133719_0695_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132542_0265_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141612_0300_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610134140_0855_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133755_0719_T_bad_4.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610134223_0875_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133011_0433_T_bad_1.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610134151_0862_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610141553_0286_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133755_0719_T_bad_12.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132502_0239_T_bad_4.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132752_0342_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132143_0125_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132630_0290_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133557_0644_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132848_0380_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610134950_0035_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132623_0285_T_bad_2.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133904_0760_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610135032_0058_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133533_0629_T_bad_12.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610135117_0086_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610135101_0075_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610134131_0848_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132000_0065_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141445_0244_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132458_0237_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141922_0418_T_bad_0.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610141803_0367_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610140028_0036_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610135115_0084_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610134036_0818_T_bad_11.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133557_0644_T_bad_9.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133658_0680_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610135029_0056_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134015_0804_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133547_0638_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610135115_0084_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132638_0296_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141412_0220_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610142141_0500_T_bad_1.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610132630_0290_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132544_0266_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133908_0763_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133613_0655_T_bad_16.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133428_0593_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133840_0743_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132829_0367_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132426_0222_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132315_0180_T_bad_3.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610133651_0676_T_bad_4.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133557_0644_T_bad_10.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133836_0740_T_bad_3.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132558_0275_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134146_0859_T_bad_1.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133836_0740_T_bad_11.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132619_0283_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133443_0601_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610134038_0819_T_healthy_3.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610134232_0880_T_healthy_4.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133411_0581_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133530_0627_T_bad_1.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610131955_0061_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610134036_0818_T_bad_9.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610131922_0044_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132544_0266_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610141759_0364_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141934_0426_T_bad_3.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133147_0494_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610135044_0066_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133836_0740_T_bad_15.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132458_0237_T_bad_1.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133829_0735_T_bad_7.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132339_0190_T_bad_0.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610133530_0627_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132350_0197_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133410_0580_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610141609_0298_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134234_0882_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610142109_0477_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133533_0629_T_bad_10.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133833_0738_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132155_0134_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133446_0603_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610141357_0209_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133557_0644_T_bad_5.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610134032_0815_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610135940_0012_T_bad_5.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610134151_0862_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610141445_0244_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610141453_0250_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132618_0282_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610142017_0455_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132544_0266_T_bad_1.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133438_0598_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610135940_0012_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610134036_0818_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132530_0257_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610141950_0436_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132752_0342_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132015_0076_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132320_0183_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141922_0418_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132623_0285_T_bad_5.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132657_0309_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610142210_0513_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133903_0759_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610134006_0798_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141608_0297_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132008_0071_T_bad_0.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610141838_0392_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133836_0740_T_bad_4.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133755_0719_T_bad_14.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610132549_0269_T_bad_4.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132549_0269_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132802_0349_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133836_0740_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610131955_0061_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610141950_0436_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610142114_0480_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610134146_0859_T_bad_11.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134036_0818_T_bad_7.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133844_0746_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610134148_0861_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133913_0767_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610135101_0075_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132307_0174_T_bad_3.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610131955_0061_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132343_0192_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610141604_0294_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133557_0644_T_bad_11.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132535_0261_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610135940_0012_T_bad_6.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610134115_0838_T_bad_0.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610135029_0056_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133851_0751_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610135117_0086_T_bad_3.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610132244_0158_T_bad_2.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132410_0211_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133533_0629_T_bad_7.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133102_0461_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610135044_0066_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610142017_0455_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610135230_0130_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133755_0719_T_bad_17.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610135142_0096_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133533_0629_T_bad_3.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132315_0180_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610135054_0072_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133424_0590_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132143_0125_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133755_0719_T_bad_6.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610131900_0034_T_bad_3.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133446_0603_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132151_0131_T_bad_3.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610133840_0743_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133539_0633_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132244_0158_T_bad_1.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133836_0740_T_bad_7.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610132138_0121_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610131927_0048_T_bad_3.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132929_0404_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133651_0676_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132354_0200_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610134234_0882_T_healthy_3.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610142017_0455_T_bad_4.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132710_0319_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133329_0558_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610135029_0056_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132151_0131_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610142210_0513_T_bad_2.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610134030_0813_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132410_0211_T_bad_3.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133851_0751_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133822_0731_T_bad_2.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132813_0356_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132005_0069_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610135149_0101_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132710_0319_T_bad_4.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132802_0349_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132807_0352_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134036_0818_T_bad_10.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133706_0686_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610134146_0859_T_bad_9.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132638_0296_T_bad_2.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610133534_0630_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132538_0263_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133755_0719_T_bad_7.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132800_0347_T_bad_3.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133024_0441_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132012_0074_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610131910_0037_T_bad_1.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610134036_0818_T_bad_3.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134318_0913_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133913_0767_T_bad_1.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132542_0265_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610131922_0044_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133342_0568_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610142129_0491_T_bad_1.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610133956_0791_T_bad_6.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133821_0730_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610134111_0835_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133613_0655_T_bad_4.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133836_0740_T_bad_12.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132151_0131_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132012_0074_T_bad_4.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132307_0174_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133739_0708_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133530_0627_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132623_0285_T_bad_8.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133542_0634_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132158_0136_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141841_0394_T_bad_2.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610134115_0838_T_bad_2.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132238_0153_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133613_0655_T_bad_1.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610135058_0074_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132618_0282_T_bad_2.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610134006_0798_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610142017_0455_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132619_0283_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133908_0763_T_bad_3.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610141857_0406_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133844_0746_T_bad_3.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132012_0074_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141523_0264_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610142137_0497_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133951_0787_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610134902_0004_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133444_0602_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133246_0529_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133613_0655_T_bad_14.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132756_0345_T_healthy_3.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133755_0719_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610134036_0818_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133024_0441_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610135219_0123_T_bad_0.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610134036_0818_T_bad_12.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132401_0204_T_bad_5.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132318_0182_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133242_0526_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132844_0378_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132341_0191_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133853_0753_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133612_0654_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132151_0131_T_bad_2.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133443_0601_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132549_0269_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132811_0355_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133956_0791_T_bad_2.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610141851_0402_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133859_0756_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132615_0281_T_bad_4.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132346_0194_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132756_0345_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610135151_0103_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132800_0347_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141608_0297_T_bad_1.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610135142_0096_T_bad_1.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610141555_0287_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132752_0342_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610134038_0819_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132657_0309_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132318_0182_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132549_0269_T_bad_5.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141928_0423_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132710_0319_T_bad_5.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132000_0065_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133533_0629_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133948_0786_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132004_0068_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141404_0214_T_healthy_3.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610135334_0157_T_healthy_3.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610135106_0079_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132948_0417_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610134902_0004_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132429_0224_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610135153_0104_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132631_0291_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610142210_0513_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133848_0749_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132401_0204_T_bad_3.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132821_0361_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132147_0128_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610134146_0859_T_bad_3.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133533_0629_T_bad_5.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610135153_0104_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133829_0735_T_bad_2.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610142109_0477_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141950_0436_T_bad_2.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133557_0644_T_bad_0.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132238_0153_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610141935_0427_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610133956_0791_T_bad_5.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132005_0069_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132615_0281_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132745_0337_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133829_0735_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610131922_0044_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610141553_0286_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133739_0708_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610134148_0861_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132429_0224_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141401_0212_T_bad_4.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132807_0352_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133456_0610_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610131923_0045_T_bad_4.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610134318_0913_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610134143_0857_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610135219_0123_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133129_0481_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610133755_0719_T_bad_3.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133829_0735_T_bad_5.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133102_0461_T_bad_1.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610132933_0407_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133137_0487_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610141934_0426_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610134124_0844_T_bad_0.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132015_0076_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610132238_0153_T_bad_0.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610141559_0290_T_healthy_2.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610141835_0390_T_bad_2.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610132151_0131_T_bad_5.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132929_0404_T_healthy_3.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610132244_0158_T_bad_4.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610132933_0407_T_bad_2.JPG",
+        "label": "cell medium"
+    },
+    {
+        "name": "DJI_20220610133555_0643_T_healthy_1.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133853_0753_T_bad_1.JPG",
+        "label": "cell low"
+    },
+    {
+        "name": "DJI_20220610133859_0756_T_bad_1.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132538_0263_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133737_0707_T_bad_0.JPG",
+        "label": "vegetation"
+    },
+    {
+        "name": "DJI_20220610134038_0819_T_bad_1.JPG",
+        "label": "multicell medium"
+    },
+    {
+        "name": "DJI_20220610135044_0066_T_healthy_0.JPG",
+        "label": "healthy"
+    },
+    {
+        "name": "DJI_20220610133557_0644_T_bad_2.JPG",
+        "label": "multicell low"
+    },
+    {
+        "name": "DJI_20220610132558_0275_T_bad_3.JPG",
+        "label": "cell low"
+    }
+]

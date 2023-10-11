@@ -22,9 +22,11 @@ class PannelClassificationDataset(Dataset):
         self.opt        = opt
 
         self.dataset_dir = opt.dataset_dir
+        self.tags_dir = opt.dataset_dir
         self.dataset_dir = os.path.join(self.dataset_dir, 'train')
 
-        with open(os.path.join(self.dataset_dir, 'labels.json'), 'r') as f:
+
+        with open(os.path.join(self.tags_dir, 'labels.json'), 'r') as f:
             self.defects = json.load(f)
 
         self.training_frac = opt.training_frac
@@ -45,15 +47,13 @@ class PannelClassificationDataset(Dataset):
 
         for it in pannels_data:
             im    = cv2.imread(os.path.join(self.dataset_dir, it['name']))
-
             im    = cv2.imread(os.path.join(self.dataset_dir, it['name']))
             im    = cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
-            t_im  = cv2.resize(im, (70, 100), cv2.INTER_AREA)
-            t_im  = torchvision.transforms.ToTensor()(t_im)
+            t_im  = torchvision.transforms.ToTensor()(im)
 
             t_im = transforms(t_im)
 
-            label = self.defects[it['label']]
+            label = self.defects.index(it['label'])
 
             if label not in self.labels_corrected:
                 self.labels_corrected.append(label)
@@ -62,7 +62,6 @@ class PannelClassificationDataset(Dataset):
                 self.tags_corrected.append(it['label'])
 
             self.dataset.append((t_im, self.labels_corrected.index(label)))
-
 
         print("[info] Loaded dataset ")
         print("[info] Number of samples: ", len(self.dataset))

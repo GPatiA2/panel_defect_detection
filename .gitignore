@@ -14,3 +14,4 @@ dataset/smart_merged
 results
 dataset_generation/datadron_pdf
 dataset_generation/ImagesWithDefects
+weights/*

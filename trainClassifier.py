@@ -24,8 +24,8 @@ print("[info] Checkpoint directory: ", ckpt_dir)
 print("[info] Log directory: ", log_dir)
 _ = input("[info] Press enter to continue")
 
-with open(os.path.join(results_dir, 'opt.txt'), 'w') as f:
-    f.write(str(opt)) 
+with open(os.path.join(results_dir, 'opt.json'), 'w') as f:
+    json.dump(vars(opt), f, indent = 4) 
 
 callback_list = []
 ckpt_callback = pl.callbacks.ModelCheckpoint(dirpath=ckpt_dir, monitor='val/loss',
