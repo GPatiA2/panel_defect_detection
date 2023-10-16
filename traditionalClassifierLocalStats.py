@@ -4,8 +4,6 @@ import os
 import argparse
 import json
 from copy import deepcopy
-from sklearn import cluster
-from functools import partial
 
 class TraditionalClassifier():
 
@@ -53,17 +51,16 @@ class TraditionalClassifier():
     def transforms(self):
 
         def preprocess(img):
-            # img  = cv2.equalizeHist(img)
-            # img  = cv2.GaussianBlur(img, (5,5), 0)
-            img = cv2.ximgproc.rollingGuidanceFilter(img, numOfIter= 10 )
             mean = np.mean(img[img > 0])
             std  = np.std(img[img > 0])
+            img = cv2.ximgproc.rollingGuidanceFilter(img, numOfIter= 10 )
             img  = cv2.threshold(img, mean + std, 255, cv2.THRESH_BINARY_INV)[1]
-            # img  = cv2.Laplacian(img, cv2.CV_8U, ksize=5)
-            # img  = cv2.morphologyEx(img, cv2.MORPH_OPEN, np.ones((3,3), np.uint8))
-            cv2.namedWindow("ROLLING + TH", cv2.WINDOW_NORMAL)
-            cv2.resizeWindow("ROLLING + TH", 800, 800)
-            cv2.imshow("ROLLING + TH", img)
+            img = cv2.morphologyEx(img, cv2.MORPH_GRADIENT, np.ones((3,3), np.uint8))
+            img = cv2.copyMakeBorder(img, 1, 1, 1, 1, cv2.BORDER_CONSTANT, value=255)
+            # img = cv2.Laplacian(img, ksize = 5, ddepth= cv2.CV_8U)
+            cv2.namedWindow("Result transforms", cv2.WINDOW_NORMAL)
+            cv2.resizeWindow("Result transforms", 800, 800)
+            cv2.imshow("Result transforms", img)
             return img
         
         return preprocess
@@ -105,7 +102,7 @@ if __name__ == "__main__":
         'minDistBetweenBlobs' : 5,
 
         'filterByArea' : True,
-        'minArea' : 20,
+        'minArea' : 5,
         'maxArea' : 1000,
 
         'filterByCircularity' : False,
@@ -136,6 +133,9 @@ if __name__ == "__main__":
 
         im = cv2.imread(im_path)
         im = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+        cv2.namedWindow("GRAY", cv2.WINDOW_NORMAL)
+        cv2.resizeWindow("GRAY", 800, 800)
+        cv2.imshow("GRAY", im)
         im2 = detector.transforms()(deepcopy(im))
 
         im_with_keypoints, kp = detector.predict_step(im2)
