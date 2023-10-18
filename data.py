@@ -75,7 +75,7 @@ class SimpleDataset(Dataset):
         return self.dataset[index]
     
     def apply(self, function):
-        self.dataset = [function(it) for it in self.dataset]
+        self.dataset = [(function(it[0]), it[1]) for it in self.dataset]
 
 
 

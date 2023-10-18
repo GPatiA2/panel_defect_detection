@@ -4,6 +4,7 @@ import torch
 import torch.optim.lr_scheduler as lr_scheduler
 from traditionalClassifierLocalStats import TraditionalClassifier
 import cv2
+import numpy as np
 
 class BlobDetectionBCELoss(nn.Module):
 
@@ -13,7 +14,8 @@ class BlobDetectionBCELoss(nn.Module):
 
     def forward(self, pred, target):
         classifier = TraditionalClassifier()
-        classifier.set_params(pred)
+        pred2 = np.squeeze(pred.numpy())
+        classifier.set_params(pred2)
 
         pred = classifier.predict(target)
         loss = self.criterion(pred, target)
@@ -22,11 +24,12 @@ class BlobDetectionBCELoss(nn.Module):
 
 class TraditionalClassifierModel(pl.LightningModule):
 
-    def __init__(self, inw, inh):
-
-        self.inw = inw
-        self.inh = inh
-        self.indim = inh * inw
+    def __init__(self, opt):
+        super(TraditionalClassifierModel, self).__init__()
+        self.opt = opt
+        self.inw = opt.wdim
+        self.inh = opt.hdim
+        self.indim = self.inh * self.inw
         self.model = nn.Sequential(
             nn.Flatten(),
             nn.Linear(self.indim, 24),
@@ -57,15 +60,15 @@ class TraditionalClassifierModel(pl.LightningModule):
         
         return dict
     
-    def transformf(self):
+    def transforms(self):
 
         def torch_transform(im):
 
-            im = im.numpy()
             cv2_transform = TraditionalClassifier().transforms()
             im = cv2_transform(im)
             im = cv2.resize(im, (self.inw, self.inh))
             im = torch.from_numpy(im)
+            im = im.type(torch.FloatTensor)
             return im
         
         return torch_transform

@@ -28,9 +28,10 @@ with open(os.path.join(results_dir, 'opt.json'), 'w') as f:
     json.dump(vars(opt), f, indent = 4) 
 
 callback_list = []
-# ckpt_callback = pl.callbacks.ModelCheckpoint(dirpath=ckpt_dir, monitor='val/loss',
-#                                               save_top_k=4, mode='min')
-# callbacks.append(ckpt_callback)
+
+ckpt_callback = pl.callbacks.ModelCheckpoint(dirpath=ckpt_dir, monitor='val/loss',
+                                              save_top_k=4, mode='min')
+callbacks.append(ckpt_callback)
 
 if opt.sched:
     lr_callback = pl.callbacks.LearningRateMonitor(logging_interval='epoch')
@@ -44,12 +45,14 @@ model = TraditionalClassifierModel(opt)
 dataset = BinaryPannelClassificationDataset(opt)
 
 train_ds, val_ds = dataset.split()
+train_ds.apply(model.transforms())
+val_ds.apply(model.transforms())
 train_dl = DataLoader(train_ds, batch_size=opt.batch_size, shuffle=True, num_workers=opt.num_workers)
 val_dl   = DataLoader(val_ds, batch_size=opt.batch_size, shuffle=False, num_workers=opt.num_workers)
 
 _ = input("[info] Press enter to start training")
 
-trainer = pl.Trainer(devices = 1, max_epochs=opt.epochs, callbacks=callback_list, logger = tensorboard_log ,accelerator='cpu', log_every_n_steps=3, enable_checkpointing = False)
+trainer = pl.Trainer(devices = 1, max_epochs=opt.epochs, callbacks=callback_list, logger = tensorboard_log ,accelerator='cpu', log_every_n_steps=3)
 trainer.fit(model = model, train_dataloaders=train_dl, val_dataloaders=val_dl)
 
 
