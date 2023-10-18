@@ -15,6 +15,70 @@ import sklearn.model_selection as sk
 import torchvision.models
 
 
+class BinaryPannelClassificationDataset(Dataset):
+
+    def __init__(self, opt):
+
+        self.opt = opt
+        self.images_dir = opt.images_dir
+        self.labels_file = opt.labels_file
+        self.training_frac = opt.training_frac
+
+        self.hdim = opt.hdim
+        self.wdim = opt.wdim
+
+        self.dataset = []
+
+        with open(self.labels_file, 'r') as f:
+            labels = json.load(f)
+
+        for it in labels['train'].items():
+            im = cv2.imread(os.path.join(self.images_dir, it[0]))
+            im = cv2.resize(im, (self.wdim, self.hdim))
+            label = it[1]
+            self.dataset.append((im, label))
+
+        print("[info] Loaded dataset ")
+        print("[info] Number of samples: ", len(self.dataset))
+
+    def __len__(self):
+        return len(self.dataset)
+    
+    def split(self):
+
+        shuffle(self.dataset)
+
+        x = [it[0] for it in self.dataset]
+        y = [it[1] for it in self.dataset]
+
+        X_train, X_val, y_train, y_val = sk.train_test_split(x, y, test_size= 1 - self.training_frac, shuffle=True, stratify=y)
+
+        train_set = [(X_train[i], y_train[i]) for i in range(len(X_train))]
+        val_set   = [(X_val[i], y_val[i]) for i in range(len(X_val))]
+
+        print("[info] Split dataset ")
+        print("[info] Training set: ", len(train_set))
+        print("[info] Validation set: ", len(val_set))
+
+        return SimpleDataset(train_set), SimpleDataset(val_set)
+    
+class SimpleDataset(Dataset):
+
+    def __init__(self, data):
+
+        self.dataset = data
+
+    def __len__(self):
+        return len(self.dataset)
+    
+    def __getitem__(self, index):
+        return self.dataset[index]
+    
+    def apply(self, function):
+        self.dataset = [function(it) for it in self.dataset]
+
+
+
 class PannelClassificationDataset(Dataset):
 
     def __init__(self, opt, transforms):
@@ -27,6 +91,8 @@ class PannelClassificationDataset(Dataset):
 
 
         with open(os.path.join(self.tags_dir, 'labels.json'), 'r') as f:
+            # Defects es el json que contiene los defectos que se van a detectar
+            # Se debe obtener al generar el dataset
             self.defects = json.load(f)
 
         self.training_frac = opt.training_frac

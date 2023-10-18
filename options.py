@@ -90,4 +90,31 @@ def OptionParserTestClassifier():
     print(opt)
     return opt
 
+def OptionParserTraditionalClassifier():
+
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument('--images_dir', type=str, help='Path to dir containing images')
+    parser.add_argument('--labels_file', type=str, help='Path to file containing labels')
+    parser.add_argument('--results_dir', type=str, help='Path to dir where results will be saved')
+
+    parser.add_argument('--batch_size', type=int, help='Batch size', default = 16)
+    parser.add_argument('--num_workers', type=int, help='Number of workers', default = 4)
+    parser.add_argument('--training_frac', type=float, help='Fraction of dataset to use for training')
+
+    parser.add_argument('--optimizer', type=str, help='Optimizer to use', choices=['adam', 'radam', 'adamw'], default = 'adam')
+    parser.add_argument('--lr', type=float, help='Learning rate', default = 0.001)
+    parser.add_argument('--b1', type=float, help='Beta 1', default = 0.9)
+    parser.add_argument('--b2', type=float, help='Beta 2', default = 0.999)
+    parser.add_argument('--weight_decay', type=float, help='Weight decay', default = 0)
+    parser.add_argument('--epochs', type=int, help='Number of epochs', default = 100)
+    parser.add_argument('--sched', type =bool, help='Use scheduler', default = False)
+
+    parser.add_argument('--hdim', type=int, help='Height dimension', default = 50)
+    parser.add_argument('--wdim', type=int, help='Width dimension', default = 35)
+
+    opt = parser.parse_args()
+    print(opt)
+
+    return opt
     
