@@ -81,7 +81,7 @@ class TraditionalClassifier():
 
         batch_pred = []
         for im in batch:
-            kp   = self.detector.detect(image = im)
+            kp   = self.detector.detect(image = np.uint8(im.numpy()))
             pred = 1 if len(kp) > 0 else 0
             batch_pred.append(pred) 
         return batch_pred
