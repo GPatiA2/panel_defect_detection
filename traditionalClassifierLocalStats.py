@@ -7,7 +7,7 @@ from copy import deepcopy
 
 class TraditionalClassifier():
 
-    def __init__(self):    
+    def __init__(self):
         params = cv2.SimpleBlobDetector_Params()
         self.detector = cv2.SimpleBlobDetector_create(params)
         
