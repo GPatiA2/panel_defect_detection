@@ -2,7 +2,7 @@ from pannel_detector import PannelDetector
 import cv2
 import numpy as np
 from pannel_chopper import PannelChopper
-from model import PannelClassifier
+from models.model import PannelClassifier
 from random import randint
 from argparse import Namespace
 import torchvision

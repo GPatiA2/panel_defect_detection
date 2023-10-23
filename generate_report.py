@@ -1,7 +1,7 @@
 from report_data_generator import ReportDataGenerator
 from pannel_detector import PannelDetector
 from pannel_chopper import PannelChopper
-from model import PannelClassifier, NeuralClassifierLoader
+from models.model import PannelClassifier, NeuralClassifierLoader
 
 from pylatex import Document, Section, Subsection, Tabular, Math, TikZ, Axis, \
     Plot, Figure, Matrix, Alignat, Command, LongTable, MultiColumn

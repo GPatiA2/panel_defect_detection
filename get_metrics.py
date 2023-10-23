@@ -2,18 +2,30 @@ import sklearn.metrics as metrics
 import sklearn as sk
 import numpy as np
 import torch
-from model import PannelClassifier
+from models.lightingTraditionalModel import TraditionalClassifierModel
 import os
-from options import OptionParserTestClassifier
-from data import TestDataset
+from options import OptionParserTraditionalClassifier
+from data import BinaryPannelClassificationDataset   
+from torch.utils.data import DataLoader
+import json
+import cv2
 
-opt = OptionParserTestClassifier()
+opt = OptionParserTraditionalClassifier()
 
-model = PannelClassifier(opt)
+model = TraditionalClassifierModel(opt)
 
-dataset = TestDataset(opt)
+ds = []
+with open(os.path.join(opt.labels_file), 'r') as f:
+    tags = json.load(f)
 
-data_loader = torch.utils.data.DataLoader(dataset, batch_size=opt.batch_size, shuffle=False, num_workers=opt.num_workers)
+for it in tags['test']:
+    path = os.path.join(opt.images_dir, it[0])
+    im = cv2.imread(path)
+    im_t = model.transforms()(im)
+    ds.append((im_t, it[1]))
+
+
+data_loader = DataLoader(ds, batch_size=opt.batch_size, shuffle=False, num_workers=opt.num_workers)
 
 model.load_checkpoint(opt.ckpt_path)
 model.eval()

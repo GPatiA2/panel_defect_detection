@@ -4,7 +4,7 @@ from options import OptionParserClassifier
 import cv2
 from pytorch_lightning import loggers as pl_loggers
 import pytorch_lightning as pl
-from model import PannelClassifier
+from models.model import PannelClassifier
 from data import PannelClassificationDataset
 from torch.utils.data import DataLoader
 import os

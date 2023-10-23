@@ -4,11 +4,12 @@ from options import OptionParserTraditionalClassifier
 import cv2
 from pytorch_lightning import loggers as pl_loggers
 import pytorch_lightning as pl
-from traditionalClassifierModel import TraditionalClassifierModel
+from models.lightingTraditionalModel import TraditionalClassifierModel
 from data import BinaryPannelClassificationDataset
 from torch.utils.data import DataLoader
 import os
 import json
+import torchinfo
 
 opt = OptionParserTraditionalClassifier()
 
@@ -41,6 +42,9 @@ tensorboard_log = pl_loggers.TensorBoardLogger(save_dir=log_dir, name='lightning
 tensorboard_log.experiment.add_text('opt', str(vars(opt)), 0)
 
 model = TraditionalClassifierModel(opt)
+
+net = model.model
+tensorboard_log.experiment.add_text('model', str(torchinfo.summary(net, input_size=(1,1,35,50))), 0)
 
 dataset = BinaryPannelClassificationDataset(opt)
 
