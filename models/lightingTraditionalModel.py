@@ -2,7 +2,7 @@ import pytorch_lightning as pl
 import torch.nn as nn
 import torch
 import torch.optim.lr_scheduler as lr_scheduler
-from traditionalClassifierLocalStats import TraditionalClassifier
+from BlobDetectorClassifier import BlobTraditionalClassifier
 import cv2
 import numpy as np
 from copy import deepcopy
@@ -54,11 +54,15 @@ class TraditionalClassifierModel(pl.LightningModule):
         
         return dict
     
+    def load_checkpoint(self, ckpt_path):
+        self.model.load_state_dict(torch.load(ckpt_path))
+        self.model.eval()
+    
     def transforms(self):
 
         def torch_transform(im):
 
-            cv2_transform = TraditionalClassifier().transforms()
+            cv2_transform = BlobTraditionalClassifier().transforms()
             im = cv2_transform(im)
             im = cv2.resize(im, (self.inw, self.inh))
             im = torch.from_numpy(im)
@@ -106,5 +110,6 @@ class TraditionalClassifierModel(pl.LightningModule):
     def predict_step(self, batch, batch_idx):
         x = batch
         x = self.transforms()(x)
+        x = x[None, ...]
         y_pred = self.model(x)
         return y_pred

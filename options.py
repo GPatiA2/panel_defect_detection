@@ -110,8 +110,8 @@ def OptionParserTraditionalClassifier():
     parser.add_argument('--epochs', type=int, help='Number of epochs', default = 100)
     parser.add_argument('--sched', type =bool, help='Use scheduler', default = False)
 
-    parser.add_argument('--hdim', type=int, help='Height dimension', default = 50)
-    parser.add_argument('--wdim', type=int, help='Width dimension', default = 35)
+    parser.add_argument('--hdim', type=int, help='Height dimension', default = 35)
+    parser.add_argument('--wdim', type=int, help='Width dimension', default = 50)
 
     opt = parser.parse_args()
     print(opt)

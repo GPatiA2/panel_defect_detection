@@ -5,7 +5,7 @@ import argparse
 import json
 from copy import deepcopy
 
-class TraditionalClassifier():
+class BlobTraditionalClassifier():
 
     def __init__(self):
         params = cv2.SimpleBlobDetector_Params()
@@ -89,10 +89,10 @@ class TraditionalClassifier():
     def transforms(self):
 
         def preprocess(img):
+            img  = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
             mean = np.mean(img[img > 0])
             std  = np.std(img[img > 0])
-            img  = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-            img  = cv2.ximgproc.rollingGuidanceFilter(img, numOfIter= 10 )
+            img  = cv2.ximgproc.rollingGuidanceFilter(img, numOfIter= 10)
             img  = cv2.threshold(img, mean + std, 255, cv2.THRESH_BINARY_INV)[1]
             img  = cv2.morphologyEx(img, cv2.MORPH_GRADIENT, np.ones((3,3), np.uint8))
             img  = cv2.copyMakeBorder(img, 1, 1, 1, 1, cv2.BORDER_CONSTANT, value=255)
@@ -157,7 +157,7 @@ if __name__ == "__main__":
         # 'thresholdStep' : 10
     }
 
-    detector = TraditionalClassifier(blob_params)
+    detector = BlobTraditionalClassifier()
 
     dataset = load_dataset(args.image_path)
 
