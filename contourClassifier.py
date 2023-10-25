@@ -72,109 +72,124 @@ def options():
     return opt
 
 def straighten_img(img):
-    contours, _ = cv2.findContours(img, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
 
-    maxArea = 0
-    best = None
+    th_img = cv2.threshold(img, 30, 255, cv2.THRESH_BINARY)[1]
+    contours, hierarchy = cv2.findContours(th_img, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+    max_area = 0
+    max_contour = None
     for contour in contours:
         area = cv2.contourArea(contour)
-        if area > maxArea :
-            maxArea = area
-            best = contour
+        if area > max_area:
+            max_area = area
+            max_contour = contour
 
-    rect = cv2.minAreaRect(best)
+    rect = cv2.minAreaRect(max_contour)
     box = cv2.boxPoints(rect)
-    box = np.int0(box)
+    box = np.intp(box)
 
-    #crop image inside bounding box
-    scale = 1  # cropping margin, 1 == no margin
-    W = rect[1][0]
-    H = rect[1][1]
+    # rect_img = cv2.drawContours(np.stack((th_img.copy(),)*3, axis = -1), [box], 0, (0,0,255),1)
+    # cv2.namedWindow('orig', cv2.WINDOW_NORMAL)
+    # cv2.resizeWindow('orig', 800, 800)
+    # cv2.imshow('orig', img)
 
-    Xs = [i[0] for i in box]
-    Ys = [i[1] for i in box]
-    x1 = min(Xs)
-    x2 = max(Xs)
-    y1 = min(Ys)
-    y2 = max(Ys)
+    # cv2.namedWindow('rect', cv2.WINDOW_NORMAL)
+    # cv2.resizeWindow('rect', 800, 800)
+    # cv2.imshow('rect', rect_img)
 
-    angle = rect[2]
-    rotated = False
-    if angle > 45:
-        angle -= 90
-        rotated = True
+    x_coords = [b[0] for b in box]
+    y_coords = [b[1] for b in box]
 
-    center = (int((x1+x2)/2), int((y1+y2)/2))
-    size = (int(scale*(x2-x1)), int(scale*(y2-y1)))
+    h = max(x_coords) - min(x_coords)
+    w = max(y_coords) - min(y_coords)
 
-    M = cv2.getRotationMatrix2D((size[0]/2, size[1]/2), angle, 1.0)
+    center = (min(x_coords) + h/2, min(y_coords) + w/2)
 
-    cropped = cv2.getRectSubPix(img, size, center)
-    cropped = cv2.warpAffine(cropped, M, size)
+    orig_angle = rect[2]
+    if orig_angle != 90:
+        if orig_angle > 45:
+            angle = -90 + orig_angle
+        else:
+            angle = orig_angle
+    else:
+        return img
 
-    croppedW = W if rotated else H
-    croppedH = H if rotated else W
+    rot_m = cv2.getRotationMatrix2D(center, angle, 1)
+    image = cv2.warpAffine(img, rot_m, (img.shape[1], img.shape[0]), flags=cv2.INTER_AREA)
 
-    image = cv2.getRectSubPix(cropped, (int(croppedW*scale), int(croppedH*scale)), (size[0]/2, size[1]/2))
+    # cv2.namedWindow('rotated', cv2.WINDOW_NORMAL)
+    # cv2.resizeWindow('rotated', 800, 800)
+    # cv2.imshow('rotated', image)
+    # cv2.waitKey(0)
 
     return image
 
 
 if __name__ == "__main__":
 
-    opt = options()
-    params = vars(opt)
+    # opt = options()
+    # params = vars(opt)
 
-    dataset    = load_dataset(params['images_dir'])
+    dataset    = load_dataset('dataset/all')
+    
     ds         = [cv2.imread(it[0]) for it in dataset]
 
     ds_g       = [cv2.cvtColor(it, cv2.COLOR_BGR2GRAY) for it in ds]
 
     ds_str     = [straighten_img(it) for it in ds_g]
 
-    for im in ds_str:
-        cv2.namedWindow('im', cv2.WINDOW_NORMAL)
-        cv2.resizeWindow('im', 800, 800)
-        cv2.imshow('im', im)
-        cv2.waitKey(0)
+    ds_r       = [cv2.resize(it, (35,50)) for it in ds_str]
 
-    ds_r       = [cv2.resize(it, (35,50)) for it in ds_g]
-
-    stacked    = np.stack(ds_r)
+    stacked    = np.stack(ds_r, axis=0)
 
     median_img = np.median(stacked, axis=0)
-    print(median_img.shape)
 
-    print(ds_r[0].shape)
-
-    print(median_img)
     cv2.namedWindow("med", cv2.WINDOW_NORMAL)
     cv2.resizeWindow("med", 800, 800)
-    cv2.imshow("med",np.uint8(median_img))
+    cv2.imshow("med", cv2.equalizeHist(np.uint8(median_img)))
     cv2.waitKey(0)
 
     ds_sus_median = [cv2.subtract(np.uint8(it), np.uint8(median_img)) for it in ds_r]
 
-    def get_kernel(size):
-        k = np.ones((size,size),np.uint8)
-        k[int(size/2), int(size/2)] = 0
-        print(k) 
-        return k
-
-
-    t1 = lambda x : cv2.GaussianBlur(x, (7,7), 3)
-    t2 = lambda x : x 
-
-    t = lambda x : t2(t1(x))
-    ds_t = [t(it) for it in ds_sus_median]
+    ds_t = ds_sus_median
 
     cv2.namedWindow("original", cv2.WINDOW_NORMAL)
     cv2.resizeWindow("original", 800, 800)
 
     cv2.namedWindow("filtered", cv2.WINDOW_NORMAL)
     cv2.resizeWindow("filtered", 800, 800)
+    
+    ds_t = []
+    for img in ds_sus_median:
+        cv2.imshow("original", img)
+        maxVal = np.max(img)
+        minVal = np.min(img[np.nonzero(img)])
+        median = np.median(img[np.nonzero(img)])
+        print(maxVal, " ",  minVal, " ", median)
+        print(maxVal - minVal)
+        print(maxVal - median)
+        print("=======")
+        median = np.median(img)
 
-    for i in range(len(ds_t)):
-        cv2.imshow("filtered", ds_t[i])
-        cv2.imshow("original", ds_r[i])
+        mul = np.multiply(np.float32(img),img/50, dtype=np.float32)
+        # img = cv2.boxFilter(img, -1, (11,11))
+        img = np.uint8(np.clip(mul, 0, 255 ))
+        # img = cv2.bitwise_not(img)
+        # img = cv2.convertScaleAbs(img, alpha=.5, beta=0)
+
+
+        # img = cv2.morphologyEx(img, cv2.MORPH_GRADIENT, (5,5))
+        # img = cv2.morphologyEx(img, cv2.MORPH_CLOSE, (5,5))
+        # img = cv2.threshold(img, 10, 255, cv2.THRESH_BINARY)[1]
+
+        cv2.imshow("filtered", img)
+        ds_t.append(img)
         cv2.waitKey(0)
+
+
+
+
+    # for i in range(len(ds_t)):
+    #     cv2.imshow("filtered", ds_t[i])
+    #     cv2.imshow("original", ds_r[i])
+    #     cv2.waitKey(0)
