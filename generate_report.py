@@ -2,6 +2,7 @@ from report_data_generator import ReportDataGenerator
 from pannel_detector import PannelDetector
 from pannel_chopper import PannelChopper
 from models.model import PannelClassifier, NeuralClassifierLoader
+from contourClassifier import ContourClassifier
 
 from pylatex import Document, Section, Subsection, Tabular, Math, TikZ, Axis, \
     Plot, Figure, Matrix, Alignat, Command, LongTable, MultiColumn
@@ -18,11 +19,13 @@ COLORS = [
 
 detector   = PannelDetector('weights/model_final_thermal.pth')
 chopper    = PannelChopper((70,100))
-classifier = NeuralClassifierLoader('results/try0/opt.json','results/try0/logs/lightning_logs/version_0/checkpoints/epoch=49-step=600.ckpt').load_classifier()
+# classifier = NeuralClassifierLoader('results/try0/opt.json','results/try0/logs/lightning_logs/version_0/checkpoints/epoch=49-step=600.ckpt').load_classifier()
+classifier = ContourClassifier({'rolling_iters':5, 'median_img':'median.png'})
 
-gen = ReportDataGenerator(detector, classifier, chopper, 'dataset/smart_merged2/labels.json', 'latex_imgs', test=True)
+gen = ReportDataGenerator(detector, classifier, chopper, 'dataset/generic_labels.json', 'latex_imgs', test=False)
+gen.classes = ['healthy', 'defect']
 
-report_data = gen.generate_report_data('datadron_real')
+report_data = gen.generate_report_data('datadron_real', show_crops=False)
 images, total_defect_count = report_data
 legend_path  = gen.save_legend_image()
 

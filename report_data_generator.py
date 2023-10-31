@@ -26,9 +26,10 @@ class ReportDataGenerator():
         with open(tag_path, 'r') as f:
             self.classes = json.load(f)
 
-        self.plt_colors = self.labels_as_colors(self.classes)
-        print(self.plt_colors)
-        self.cv2_colors = [[it[i] * 255 for i in range(len(it))] for it in self.plt_colors]
+        # self.plt_colors = self.labels_as_colors(self.classes)
+        # self.cv2_colors = [[it[i] * 255 for i in range(len(it))] for it in self.plt_colors]
+        self.plt_colors = [(0,1,0), (1,0,0)]
+        self.cv2_colors = [(0,255,0), (0,0,255)]
         self.rects = [patches.Patch(color=self.plt_colors[i], 
                                 label=self.classes[i]) for i in range(len(self.cv2_colors))]
 
@@ -122,13 +123,15 @@ class ReportDataGenerator():
             for c in crops:
 
                 if self.test:
-                    pred = torch.randint(0, 6, (1,1)    )
+                    pred = torch.randint(0, 6, (1,1))
                 else:
-                    img = torchvision.transforms.ToTensor()(c[1])
-                    img = img[None, : , : , :]
-                    img = self.classifier.transforms()(img)
-                    pred = self.classifier.predict_step(img, i)
-                    pred = np.argmax(Softmax(dim = 0)(pred))
+                    pred = self.classifier.predict_step(np.uint8(c[1]))
+                    pred = torch.from_numpy(np.array(pred))
+                    # img = torchvision.transforms.ToTensor()(c[1])
+                    # img = img[None, : , : , :]
+                    # img = self.classifier.transforms()(img)
+                    # pred = self.classifier.predict_step(img, i)
+                    # pred = np.argmax(Softmax(dim = 0)(pred))
                 
                 im2 = cv2.drawContours(im2, c[0], -1, self.cv2_colors[pred], 2)
                 i += 1
