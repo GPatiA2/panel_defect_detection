@@ -5,7 +5,7 @@ from models.model import PannelClassifier, NeuralClassifierLoader
 from contourClassifier import ContourClassifier
 
 from pylatex import Document, Section, Subsection, Tabular, Math, TikZ, Axis, \
-    Plot, Figure, Matrix, Alignat, Command, LongTable, MultiColumn
+    Plot, Figure, Matrix, Alignat, Command, LongTable, MultiColumn, SubFigure
 from pylatex.utils import italic, NoEscape
 
 COLORS = [
@@ -31,8 +31,8 @@ legend_path  = gen.save_legend_image()
 
 
 geom_config = {"tmargin" : "2.5cm" ,
-               "lmargin" : "5cm",
-               "rmargin" : "5cm",
+               "lmargin" : "2.5cm",
+               "rmargin" : "2.5cm",
                "bmargin" : "2.5cm"}
 
 doc = Document(geometry_options=geom_config)
@@ -86,30 +86,34 @@ l = 0
 with doc.create(Section('Defects')):
     for im in images:
         name = im[0].replace('latex_imgs/', '')
+
         with doc.create(Figure(position='h!')) as im_fig:
-            im_fig.add_image(im[0], width=NoEscape(r'0.5\linewidth'))
-            im_fig.add_caption(name)
+            with doc.create(SubFigure(position = 'r', width=NoEscape(r'0.6\linewidth'))) as image:
+                image.add_image(im[0], width=NoEscape(r'0.55\linewidth'))
         
-        with doc.create(LongTable('|l|l|', pos = 'c')) as im_table:
-            im_table.add_hline()
-            im_table.add_row((MultiColumn(2, align='|c|', data=name),))
-            im_table.add_hline()
-            im_table.add_row(['Defect', 'Count'])
-            im_table.add_hline()
-            im_table.end_table_header()
-            im_table.add_hline()
-            s = 0
-            for key, val in im[1].items():
-                s += val
-                im_table.add_row([key, val])
-            im_table.add_hline()
-            im_table.add_row(["Total", s])
-            im_table.add_hline()
+            with doc.create(SubFigure(position = 'l', width=NoEscape(r'0.4\linewidth'))) as table:
+                with doc.create(LongTable('|l|l|', pos = 'c')) as im_table:
+                    im_table.add_hline()
+                    im_table.add_row((MultiColumn(2, align='|c|', data=name),))
+                    im_table.add_hline()
+                    im_table.add_row(['Defect', 'Count'])
+                    im_table.add_hline()
+                    im_table.end_table_header()
+                    im_table.add_hline()
+                    s = 0
+                    for key, val in im[1].items():
+                        s += val
+                        im_table.add_row([key, val])
+                    im_table.add_hline()
+                    im_table.add_row(["Total", s])
+                    im_table.add_hline()
+            
+            im_fig.add_caption(name)
 
     
         l += 1
         
-        if l % 2 == 0:
+        if l % 4 == 0:
             doc.append(NoEscape(r'\newpage'))
 
 
