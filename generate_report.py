@@ -54,6 +54,11 @@ doc.append(NoEscape(r'\newpage'))
 doc.append(NoEscape(r'\tableofcontents'))
 doc.append(NoEscape(r'\newpage'))
 
+with doc.create(Section('Plant map')):
+    with doc.create(Figure(position='h!')) as map_fig:
+        map_fig.add_image('latex_imgs/plant_map.png', width=NoEscape(r'0.8\linewidth'))
+        map_fig.add_caption('Plant map')
+
 with doc.create(Section('Defect count')):
     with doc.create(LongTable('|l|l|')) as data_table:
         data_table.add_hline()
