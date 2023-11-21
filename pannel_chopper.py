@@ -45,8 +45,38 @@ class PannelChopper():
 
             x,y,w,h = cv2.boundingRect(np.array(coords))
 
-
             mask = np.zeros((h,w,3), np.uint8)
+
+            unmasked_chop = image[y:y+h, x:x+w]
+
+            warped_coords = [[p[0][0] - x, p[0][1]- y] for p in coords]
+            warped_coords = np.int32(warped_coords)
+
+            mask = cv2.fillPoly(mask, pts = [warped_coords], color = (255,255,255))
+
+            masked_chop = cv2.bitwise_and(mask, unmasked_chop)
+
+            if self.out_shape is not None:
+                masked_chop = cv2.resize(masked_chop, self.out_shape, cv2.INTER_AREA)
+            
+            coords = np.int32([coords])
+
+            samples.append((coords, masked_chop))
+
+        return samples
+    
+    def efficient_gs_chop(self, image, detections):
+
+        samples = []
+
+        for d in detections:
+
+            coords = d["segmentation"]
+            coords = [np.int32(np.array(p)) for p in coords]
+
+            x,y,w,h = cv2.boundingRect(np.array(coords))
+
+            mask = np.zeros((h,w,1), np.uint8)
 
             unmasked_chop = image[y:y+h, x:x+w]
 
