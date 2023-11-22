@@ -1,46 +1,35 @@
-from pannel_detector import PannelDetector
 import cv2
 import numpy as np
-from pannel_chopper import PannelChopper
-from models.model import PannelClassifier
-from random import randint
-from argparse import Namespace
-import torchvision
-from torch.nn import Softmax
-import json
-from matplotlib import pyplot as plt
 import matplotlib.patches as patches
 import os
 import pylab
 import torch
-from sklearn.preprocessing import LabelBinarizer
+from thermal import Thermal
+import matplotlib.colors as mpltcolors
 
 class ReportDataGenerator():
 
-    def __init__(self, detector, classifier, chopper, tag_path, imgs_out_dir, test = False):
+    def __init__(self, pannel_detector, defect_detector, defect_classifier, chopper, imgs_out_dir, test = False):
 
         self.test = test
 
         self.out_dir = imgs_out_dir
 
-        with open(tag_path, 'r') as f:
-            self.classes = json.load(f)
+        self.classes = defect_classifier.get_classes()
 
-        # self.plt_colors = self.labels_as_colors(self.classes)
-        # self.cv2_colors = [[it[i] * 255 for i in range(len(it))] for it in self.plt_colors]
-        self.plt_colors = [(0,1,0), (1,0,0)]
-        self.cv2_colors = [(0,255,0), (0,0,255)]
+        self.plt_colors = [mpltcolors.to_rgb(c) for c in list(mpltcolors.TABLEAU_COLORS)][:len(self.classes)]
+        self.cv2_colors = [(int(c[2]*255), int(c[1]*255), int(c[0]*255)) for c in self.plt_colors]
         self.rects = [patches.Patch(color=self.plt_colors[i], 
                                 label=self.classes[i]) for i in range(len(self.cv2_colors))]
 
-        self.detector   = detector
-        self.classifier = classifier
+        self.detector   = pannel_detector
+        self.classifier = defect_detector
         self.chopper    = chopper
 
     def labels_as_colors(self, lb):
 
-        lb_c = [bin(idx + 1) for idx, val in enumerate(lb)]
-        lb_c = [lb_c[idx][2:] for idx, val in enumerate(lb_c)]
+        lb_c = [bin(idx + 1) for idx, _ in enumerate(lb)]
+        lb_c = [lb_c[idx][2:] for idx, _ in enumerate(lb_c)]
         
         max_len = max(lb_c, key = lambda x : len(x))
         lb_color_corrected = []
@@ -55,6 +44,14 @@ class ReportDataGenerator():
     def read_images(self,path):
         
         images = []
+
+        thermal = Thermal(
+            dirp_filename='plugins/dji_thermal_sdk_v1.1_20211029/linux/release_x64/libdirp.so',
+            dirp_sub_filename='plugins/dji_thermal_sdk_v1.1_20211029/linux/release_x64/libv_dirp.so',
+            iirp_filename='plugins/dji_thermal_sdk_v1.1_20211029/linux/release_x64/libv_iirp.so',
+            exif_filename='plugins/exiftool-12.35.exe',
+            dtype=np.int16,
+        )
         
         k = len(os.listdir(path)) if not self.test else 10
 
@@ -62,10 +59,10 @@ class ReportDataGenerator():
         for f in os.listdir(path):
             if f.endswith('_T.JPG') and i < k:
 
-                im = cv2.imread(os.path.join(path,f))
-                images.append((f, im))
+                im   = cv2.imread(os.path.join(path,f))
+                temp = thermal.parse_dirp2(os.path.join(path,f))
+                images.append((f, im, temp))
                 i += 1
-
 
         return images
     
@@ -112,36 +109,41 @@ class ReportDataGenerator():
                 cv2.imshow("im3", im3)
                 cv2.waitKey(0)
 
-            crops   = self.chopper.efficient_chop(im[1], detections)
+
+            rgb_crops   = self.chopper.efficient_gs_chop(im[1], detections)
+            thermal_crops = self.chopper.efficient_gs_chop(im[2], detections)
 
             if show_crops:
-                for c in crops:
+                for c in rgb_crops:
                     cv2.imshow("crop", c[1])
                     cv2.waitKey(0)
 
             i = 0
-            for c in crops:
-
-                if self.test:
-                    pred = torch.randint(0, 6, (1,1))
-                else:
-                    pred = self.classifier.predict_step(np.uint8(c[1]))
-                    pred = torch.from_numpy(np.array(pred))
-                    # img = torchvision.transforms.ToTensor()(c[1])
-                    # img = img[None, : , : , :]
-                    # img = self.classifier.transforms()(img)
-                    # pred = self.classifier.predict_step(img, i)
-                    # pred = np.argmax(Softmax(dim = 0)(pred))
+            for k in range(len(rgb_crops)):
                 
-                im2 = cv2.drawContours(im2, c[0], -1, self.cv2_colors[pred], 2)
-                i += 1
+                # Defect detection and classification
+                pred = self.detector.predict_step(np.uint8(rgb_crops[k][1]))
 
-                if self.classes[pred.item()] not in defect_count.keys():
-                    defect_count[self.classes[pred.item()]] = 0
+                if pred == 0:
+                    continue
+            
+                else:
+                    blobs, blob_types = self.classifier.classify(np.uint8(thermal_crops[k][1]))
 
-                defect_count[self.classes[pred.item()]] += 1
+                    # Whatever data type
+                    def_type = max(set(blob_types), key = blob_types.count)
 
-                defect_in_image[self.classes[pred.item()]] += 1
+                    index_def = self.classes.index(def_type)
+
+                    im2 = cv2.drawContours(im2, c[0], -1, self.cv2_colors[index_def], 2)
+                    i += 1
+
+                    if self.classes[index_def] not in defect_count.keys():
+                        defect_count[self.classes[index_def]] = 0
+
+                    defect_count[self.classes[index_def]] += 1
+
+                    defect_in_image[self.classes[index_def]] += 1
 
             pth = os.path.join(self.out_dir, im[0])
 

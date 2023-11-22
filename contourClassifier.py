@@ -5,7 +5,6 @@ import os
 import numpy as np
 import argparse
 from copy import deepcopy
-from matplotlib import pyplot as plt
 
 class ContourClassifier():
 

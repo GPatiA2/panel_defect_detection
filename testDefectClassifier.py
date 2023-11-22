@@ -37,7 +37,7 @@ def get_thermal(path) -> np.array:
         dirp_sub_filename='plugins/dji_thermal_sdk_v1.1_20211029/linux/release_x64/libv_dirp.so',
         iirp_filename='plugins/dji_thermal_sdk_v1.1_20211029/linux/release_x64/libv_iirp.so',
         exif_filename='plugins/exiftool-12.35.exe',
-        dtype=np.float32,
+        dtype=np.int16,
     )
 
     temperature = thermal.parse_dirp2(path)
@@ -65,7 +65,7 @@ def apply_local_max_filter(thermal_crop, intensity):
 
     crop = thermal_crop.copy()
     dilation = cv2.dilate(crop, np.ones((intensity, intensity), np.uint8), iterations=1)
-    dilation = cv2.ximgproc.rollingGuidanceFilter(dilation, 3)
+    # dilation = cv2.ximgproc.rollingGuidanceFilter(dilation, 3)
 
     highlight = np.zeros_like(crop)
     highlight[np.logical_and(dilation == thermal_crop, dilation != 0, thermal_crop > 23)] = 255
@@ -130,7 +130,7 @@ def show_state(thermal_crop, temp_proc, visited, blobs, blob_types):
     cv2.imshow('medium', medium)
     cv2.imshow('high', high)
 
-    cv2.waitKey(1)
+    # cv2.waitKey(1)
 
 def breadth_walk(cont_masks, contours, thermal_crop):
 
