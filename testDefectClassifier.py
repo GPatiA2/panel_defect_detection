@@ -68,16 +68,59 @@ def crop_cont(img : np.array, cont) -> np.array:
 
     return cpy, rect
 
-def apply_local_max_filter(thermal_crop, intensity):
+def local_min_filter(img, intensity):
+
+    cpy      = img.copy()
+    dilation = cv2.erode(cpy, np.ones((intensity, intensity), np.uint8), iterations = 1) 
+
+    filtered = np.zeros_like(img)
+    filtered[np.logical_and(dilation == img, dilation > 0, img > 0)] = 255
+
+    return filtered
+
+def apply_local_min_filter(img):
+
+    initial_image = img.copy()
+    
+    lmf0 = local_min_filter(initial_image, 3)
+    iters = 1000
+    for i in range(5,iters, 2):
+        lmfi = local_min_filter(initial_image, i)
+
+        if np.count_nonzero(lmfi) == np.count_nonzero(lmf0):
+            break
+
+        else:
+            lmf0 = lmfi.copy()
+
+    return lmfi
+
+def local_max_filter(thermal_crop, intensity):
 
     crop = thermal_crop.copy()
     dilation = cv2.dilate(crop, np.ones((intensity, intensity), np.uint8), iterations=1)
-    # dilation = cv2.ximgproc.rollingGuidanceFilter(dilation, 3)
 
     highlight = np.zeros_like(crop)
     highlight[np.logical_and(dilation == thermal_crop, dilation != 0, thermal_crop > 23)] = 255
 
     return highlight
+
+def apply_local_max_filter(img):
+    
+    initial_image = img.copy()
+    
+    lmf0 = local_max_filter(initial_image, 3)
+    iters = 1000
+    for i in range(5,iters, 2):
+        lmfi = local_max_filter(initial_image, i)
+
+        if np.count_nonzero(lmfi) == np.count_nonzero(lmf0):
+            break
+
+        else:
+            lmf0 = lmfi.copy()
+
+    return lmfi
 
 def calculate_neighbours(point, shape):
 
@@ -272,13 +315,13 @@ def detect(rgb_crop, thermal_crop):
 
     cv2.waitKey(0)
 
-    local_max_filter = apply_local_max_filter(thermal_crop, 3)
+    local_max_filter = local_max_filter(thermal_crop, 3)
     cv2.imshow('thermal', np.stack([thermal_crop, thermal_crop, local_max_filter], axis = -1))
     cv2.imshow('rgb', np.stack([rgb_crop, thermal_crop, local_max_filter], axis = -1))
     cv2.waitKey(0)
 
     for i in range(5, 10000, 2):
-        local_max_filter_new = apply_local_max_filter(thermal_crop, i)
+        local_max_filter_new = local_max_filter(thermal_crop, i)
         if np.count_nonzero(local_max_filter) == np.count_nonzero(local_max_filter_new):
             print("[info] Final filter intensity = " , i)
             cv2.imshow('thermal', np.stack([thermal_crop, thermal_crop, local_max_filter_new], axis = -1))
@@ -336,6 +379,7 @@ def detect(rgb_crop, thermal_crop):
         cv2.imshow('blobs rgb ' + str(k) + ' type ' + str(types[k]), rgbcrop)
         cv2.waitKey(0)
         k += 1
+
 
 def test_on_pannel(args):
 
@@ -418,6 +462,53 @@ def draw_rectangle(thermal_img):
 
     return coords
 
+def detect2(rgb_crop, thermal_crop):
+
+    local_mins_mask = apply_local_min_filter(thermal_crop)
+    local_maxs_mask = apply_local_max_filter(thermal_crop)
+
+    
+    local_mins_idx = (local_mins_mask == 255).nonzero()
+    local_maxs_idx = (local_maxs_mask == 255).nonzero()
+
+    print(local_mins_idx)
+    print(local_maxs_idx)
+
+    t = thermal_crop.copy()
+    t = np.int16(t)
+
+    local_mins_idx = sorted(local_mins_idx, key = lambda x: t[x[0], x[1]])
+    local_maxs_idx = sorted(local_maxs_idx, key = lambda x: t[x[0], x[1]])
+
+    min_idx = 0
+    defect = UNKNOWN
+    dist = 0
+    
+    debug_list = []
+
+    while defect != HIGH and min_idx < len(local_mins_idx):
+        
+        max_val = thermal_crop[local_maxs_idx[0][0], local_maxs_idx[0][1]]
+        min_val = thermal_crop[local_mins_idx[min_idx][0], local_mins_idx[min_idx][1]]
+        dif = max_val - min_val
+        debug_list.append((dif, max_val, min_val))
+        dist = np.sqrt((local_maxs_idx[0][0] - local_mins_idx[min_idx][0])**2 + (local_maxs_idx[0][1] - local_mins_idx[min_idx][1])**2)
+
+        if dif > 20:
+            defect = HIGH
+        elif dif <= 20 and dif > 10:
+            defect = MEDIUM
+        elif dif <= 10 and dif > 5:
+            defect = LOW
+        else:
+            defect = UNKNOWN
+        
+        min_idx += 1
+
+    print(debug_list)
+
+    return defect, dist, (local_maxs_idx[0][0], local_maxs_idx[0][1]), (local_mins_idx[min_idx - 1][0], local_mins_idx[min_idx - 1][1])
+
 def test_interactive(args):
 
     thermal = get_thermal(args.im_path)
@@ -432,8 +523,25 @@ def test_interactive(args):
     print(thermal_crop.shape)
     print(rgb_crop.shape)
 
-    detect(rgb_crop, thermal_crop)
+    # detect2(rgb_crop, thermal_crop)
 
+    defect, dist, max_loc, min_loc = detect2(rgb_crop, thermal_crop)
+
+    print(defect, " ", dist, " ", max_loc, " ", min_loc)
+
+    cv2.namedWindow('thermal', cv2.WINDOW_NORMAL)
+    cv2.resizeWindow('thermal', 800,800)
+
+    rgb_crop = cv2.cvtColor(rgb_crop, cv2.COLOR_GRAY2BGR)
+    rgb_crop[max_loc[0], max_loc[1]][0] = 0
+    rgb_crop[max_loc[0], max_loc[1]][1] = 0
+    rgb_crop[max_loc[0], max_loc[1]][2] = 255
+    rgb_crop[min_loc[0], min_loc[1]][0] = 255
+    rgb_crop[min_loc[0], min_loc[1]][1] = 0
+    rgb_crop[min_loc[0], min_loc[1]][2] = 0
+    rgb_crop = cv2.circle(rgb_crop, max_loc, int(dist), BLOB_COLORS[defect], 1)
+    cv2.imshow('thermal', rgb_crop)
+    cv2.waitKey(0)
 
 if __name__ == '__main__':
 

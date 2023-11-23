@@ -32,6 +32,16 @@ class DefectClassifier():
 
         return filtered
     
+    def local_min_filter(self, img, intensity):
+
+        cpy      = img.copy()
+        dilation = cv2.erode(cpy, np.ones((intensity, intensity), np.uint8), iterations = 1) 
+
+        filtered = np.zeros_like(img)
+        filtered[np.logical_and(dilation == img, dilation > 0, img > 0)] = 255
+
+        return filtered
+    
     def get_classes(self):
         
         l = ["UNKNOWN"]
@@ -48,6 +58,23 @@ class DefectClassifier():
         iters = self.params['int0'] + self.params['lmf_iter']*self.params['int_step']
         for i in range(self.params['int0'] + self.params['int_step'],iters, self.params['int_step']):
             lmfi = self.local_max_filter(initial_image, self.params['int0'] + i*self.params['int_step'])
+
+            if np.count_nonzero(lmfi) == np.count_nonzero(lmf0):
+                break
+
+            else:
+                lmf0 = lmfi.copy()
+
+        return lmfi
+    
+    def apply_local_min_filter(self, img):
+
+        initial_image = img.copy()
+        
+        lmf0 = self.local_max_filter(initial_image, self.params['int0'])
+        iters = self.params['int0'] + self.params['lmf_iter']*self.params['int_step']
+        for i in range(self.params['int0'] + self.params['int_step'],iters, self.params['int_step']):
+            lmfi = self.local_min_filter(initial_image, self.params['int0'] + i*self.params['int_step'])
 
             if np.count_nonzero(lmfi) == np.count_nonzero(lmf0):
                 break
@@ -196,7 +223,9 @@ class DefectClassifier():
     
     def classify(self, thermal_crop):
 
-        lm_img = self.apply_local_max_filter(thermal_crop)
+        lmax_img = self.apply_local_max_filter(thermal_crop)
+        lmin_img = self.apply_local_min_filter(thermal_crop)
+
         contours, cont_masks = self.get_lm_contours(lm_img)
 
         blobs, blob_types = self.breadth_walk(cont_masks, contours, thermal_crop)
