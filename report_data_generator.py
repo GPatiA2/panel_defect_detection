@@ -16,15 +16,18 @@ class ReportDataGenerator():
         self.out_dir = imgs_out_dir
 
         self.classes = defect_classifier.get_classes()
+        print(self.classes)
 
         self.plt_colors = [mpltcolors.to_rgb(c) for c in list(mpltcolors.TABLEAU_COLORS)][:len(self.classes)]
         self.cv2_colors = [(int(c[2]*255), int(c[1]*255), int(c[0]*255)) for c in self.plt_colors]
         self.rects = [patches.Patch(color=self.plt_colors[i], 
                                 label=self.classes[i]) for i in range(len(self.cv2_colors))]
 
-        self.detector   = pannel_detector
-        self.classifier = defect_detector
+        
+        self.panel_detector   = pannel_detector
         self.chopper    = chopper
+        self.defect_detector = defect_detector
+        self.defect_classifier = defect_classifier
 
     def labels_as_colors(self, lb):
 
@@ -95,7 +98,7 @@ class ReportDataGenerator():
 
             im2 = im[1].copy()
 
-            detections = self.detector.detect(im[1])
+            detections = self.panel_detector.detect(im[1])
 
             conts = [np.array(d['segmentation'], dtype=np.int32) for d in detections]
     
@@ -110,7 +113,7 @@ class ReportDataGenerator():
                 cv2.waitKey(0)
 
 
-            rgb_crops   = self.chopper.efficient_gs_chop(im[1], detections)
+            rgb_crops   = self.chopper.efficient_chop(im[1], detections)
             thermal_crops = self.chopper.efficient_gs_chop(im[2], detections)
 
             if show_crops:
@@ -120,30 +123,36 @@ class ReportDataGenerator():
 
             i = 0
             for k in range(len(rgb_crops)):
-                
+                c = rgb_crops[k]
                 # Defect detection and classification
-                pred = self.detector.predict_step(np.uint8(rgb_crops[k][1]))
+                pred = self.defect_detector.predict_step(np.uint8(rgb_crops[k][1]))
 
                 if pred == 0:
                     continue
             
                 else:
-                    blobs, blob_types = self.classifier.classify(np.uint8(thermal_crops[k][1]))
+                    blobs, blob_types = self.defect_classifier.classify(np.uint8(thermal_crops[k][1]))
 
                     # Whatever data type
-                    def_type = max(set(blob_types), key = blob_types.count)
+                    idxs = [self.classes.index(b) for b in blob_types]
+                    def_type = max(idxs)
 
-                    index_def = self.classes.index(def_type)
+                    index_def = self.classes[def_type]
 
-                    im2 = cv2.drawContours(im2, c[0], -1, self.cv2_colors[index_def], 2)
+                    print("@@@@@@@@@@@@@@@@@@@@@@@@")
+                    print("DETECTED =", blob_types)
+                    print("CALCULATED ",def_type, " BEING ", index_def)
+                    input()
+
+                    im2 = cv2.drawContours(im2, c[0], -1, self.cv2_colors[def_type], 2)
                     i += 1
 
-                    if self.classes[index_def] not in defect_count.keys():
-                        defect_count[self.classes[index_def]] = 0
+                    if self.classes[def_type] not in defect_count.keys():
+                        defect_count[self.classes[def_type]] = 0
 
-                    defect_count[self.classes[index_def]] += 1
+                    defect_count[self.classes[def_type]] += 1
 
-                    defect_in_image[self.classes[index_def]] += 1
+                    defect_in_image[self.classes[def_type]] += 1
 
             pth = os.path.join(self.out_dir, im[0])
 

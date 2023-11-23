@@ -17,13 +17,20 @@ LOW         = 1
 MEDIUM      = 2
 HIGH        = 3
 
-THRESHOLD   = 9
+C_UK        = (0,47,189)
+C_LOW       = (189,156,0)
+C_MEDIUM    = (189,99,0)
+C_HIGH      = (189,0,0)
+
+BLOB_COLORS = [C_UK, C_LOW, C_MEDIUM, C_HIGH]
+
+THRESHOLD   = 5
 
 def options():
 
     parser = argparse.ArgumentParser(description='Local Maxima Based Detector')
     parser.add_argument('--im_path', type=str, help='Path to imgs')
-    parser.add_argument('--use_full', type=bool, default=False, help='Use full image')
+    parser.add_argument('--mode', type=str, default=False, help='Use full image')
     parser.add_argument('--dpan_idx', type = int, help='Index of the defective pannel')
     parser.add_argument('--json_file', type=str, default = 'dataset/bad_pannels.json' , help='Path to json file')
     args = parser.parse_args()
@@ -110,27 +117,16 @@ def show_state(thermal_crop, temp_proc, visited, blobs, blob_types):
 
     cv2.imshow('blobs', blobs)
 
-    low = np.zeros_like(thermal_crop)
-    medium = np.zeros_like(thermal_crop)
-    high = np.zeros_like(thermal_crop)
-    unknown = np.zeros_like(thermal_crop)
-
+    blob_mat = [np.zeros((thermal_crop.shape[0], thermal_crop.shape[1], 3), np.uint8) for _ in range(len(blob_types))]
+    
     for i in range(len(blob_types)):
-        if blob_types[i] == 1:
-            low[blobs == i + 1] = 255
-        elif blob_types[i] == 2:
-            medium[blobs == i + 1] = 255
-        elif blob_types[i] == 3:
-            high[blobs == i + 1] = 255
-        else:
-            unknown[blobs == i + 1] = 255
+        cv2.namedWindow('blob ' + str(i), cv2.WINDOW_NORMAL)
+        cv2.resizeWindow('blob ' + str(i), 800,800)
+        blob_mat[i][blobs == i + 1] = BLOB_COLORS[blob_types[i]]
+        blob_mat[i] = np.uint8(blob_mat[i])
+        cv2.imshow('blob ' + str(i), blob_mat[i])
 
-    cv2.imshow('unknown', unknown)
-    cv2.imshow('low', low)
-    cv2.imshow('medium', medium)
-    cv2.imshow('high', high)
-
-    # cv2.waitKey(1)
+    cv2.waitKey(10)
 
 def breadth_walk(cont_masks, contours, thermal_crop):
 
@@ -144,7 +140,7 @@ def breadth_walk(cont_masks, contours, thermal_crop):
     temp_proc   = np.zeros_like(thermal_crop, dtype=np.uint8)
 
     # Blob type list
-    blob_types = [UNKNOWN for i in range(len(contours))]
+    blob_types = [UNKNOWN for _ in range(len(contours))]
 
     cv2.namedWindow('temp_proc', cv2.WINDOW_NORMAL)
     cv2.resizeWindow('temp_proc', 800,800)
@@ -157,18 +153,6 @@ def breadth_walk(cont_masks, contours, thermal_crop):
     cv2.namedWindow('blobs', cv2.WINDOW_NORMAL)
     cv2.resizeWindow('blobs', 800,800)
     cv2.imshow('blobs', blobs)
-
-    cv2.namedWindow('unknown', cv2.WINDOW_NORMAL)
-    cv2.resizeWindow('unknown', 800,800)
-
-    cv2.namedWindow('low', cv2.WINDOW_NORMAL)
-    cv2.resizeWindow('low', 800,800)
-
-    cv2.namedWindow('medium', cv2.WINDOW_NORMAL)
-    cv2.resizeWindow('medium', 800,800)
-
-    cv2.namedWindow('high', cv2.WINDOW_NORMAL)
-    cv2.resizeWindow('high', 800,800)
     
     visited.fill(NOT_VISITED)
     blobs.fill(NOT_VISITED)
@@ -232,7 +216,7 @@ def breadth_walk(cont_masks, contours, thermal_crop):
             # If the neighbour has not been visited
             if visited[n[0], n[1]] == NOT_VISITED and thermal_crop[n[0], n[1]] > 0:
 
-                # If the difference in temperature is less than 7ºC, assign it to the blob
+                # If the difference in temperature is less than 5ºC, assign it to the blob
                 if dif < THRESHOLD:
                     queue.append((n[0], n[1]))
                     temp_proc[n[0], n[1]] = temp_proc[point[0], point[1]]
@@ -241,15 +225,18 @@ def breadth_walk(cont_masks, contours, thermal_crop):
 
                 # Mark the whole blob to which the point belongs as LOW
                 elif dif > THRESHOLD and dif <= 10:
-                    blob_types[blobs[point[0], point[1]] - 1] = LOW
+                    blob_types[blobs[point[0], point[1]] - 1] = max(LOW, blob_types[blobs[point[0], point[1]] - 1])
+                    print("FOUND LOW ON POINT ", point, " WITH MAXIMUM ", temp_proc[point[0], point[1]], " AND NEIGHBOUR ", n, " WITH ", thermal_crop[n[0], n[1]], " WITH DIFF ", dif)
 
                 # Mark the whole blob to which the point belongs as MEDIUM
                 elif dif > 10 and dif <= 20:
-                    blob_types[blobs[point[0], point[1]] - 1] = MEDIUM
+                    blob_types[blobs[point[0], point[1]] - 1] = max(MEDIUM, blob_types[blobs[point[0], point[1]] - 1])
+                    print("FOUND MEDIUM ON POINT ", point, " WITH MAXIMUM ", temp_proc[point[0], point[1]], " AND NEIGHBOUR ", n, " WITH ", thermal_crop[n[0], n[1]], " WITH DIFF ", dif)
 
                 # Mark the whole blob to which the point belongs as HIGH
                 elif dif > 20:
-                    blob_types[blobs[point[0], point[1]] - 1] = HIGH
+                    blob_types[blobs[point[0], point[1]] - 1] = max(HIGH, blob_types[blobs[point[0], point[1]] - 1])
+                    print("FOUND HIGH ON POINT ", point, " WITH MAXIMUM ", temp_proc[point[0], point[1]], " AND NEIGHBOUR ", n, " WITH ", thermal_crop[n[0], n[1]], " WITH DIFF ", dif)
 
             # If the point is in the queue, update the temperature of the hottest pixel in the blob
             #       it belongs to with the lowest temperature of:
@@ -271,7 +258,7 @@ def breadth_walk(cont_masks, contours, thermal_crop):
 
         show_state(thermal_crop, temp_proc, visited, blobs, blob_types)
 
-    return blobs
+    return blobs, blob_types
 
 def detect(rgb_crop, thermal_crop):
 
@@ -317,7 +304,7 @@ def detect(rgb_crop, thermal_crop):
         
     print("[info] Found " + str(len(contours)) + " blobs")
     print("[info] Generated " + str(len(cont_mask)) + " masks")
-    walks = breadth_walk(cont_mask, contours, thermal_crop)
+    walks, types = breadth_walk(cont_mask, contours, thermal_crop)
 
     unique_vals, repetitions = np.unique(walks, return_counts=True)
     for i in range(len(unique_vals)):
@@ -336,17 +323,17 @@ def detect(rgb_crop, thermal_crop):
         
     k = 1
     for b in blobs:
-        cv2.namedWindow('blobs th ' + str(k), cv2.WINDOW_NORMAL)
-        cv2.resizeWindow('blobs th ' + str(k), 800,800)
-        cv2.imshow('blobs th ' + str(k), np.stack([b, thermal_crop, thermal_crop], axis = -1)) 
+        cv2.namedWindow('blobs rgb ' + str(k) + ' type ' + str(types[k])+ ' thermal', cv2.WINDOW_NORMAL)
+        cv2.resizeWindow('blobs rgb ' + str(k) + ' type ' + str(types[k])+ ' thermal', 800,800)
+        cv2.imshow('blobs rgb ' + str(k) + ' type ' + str(types[k])+ ' thermal', np.stack([b, thermal_crop, thermal_crop], axis = -1)) 
 
-        cv2.namedWindow('blobs rgb ' + str(k), cv2.WINDOW_NORMAL)
-        cv2.resizeWindow('blobs rgb ' + str(k), 800,800)
+        cv2.namedWindow('blobs rgb ' + str(k) + ' type ' + str(types[k]) , cv2.WINDOW_NORMAL)
+        cv2.resizeWindow('blobs rgb ' + str(k) + ' type ' + str(types[k]) , 800,800)
         
         rgbcrop = np.uint8(np.stack([rgb_crop, rgb_crop, rgb_crop], axis = -1))
         rgbcrop[b == 255] = [0, 0, 255]
 
-        cv2.imshow('blobs rgb ' + str(k), rgbcrop)
+        cv2.imshow('blobs rgb ' + str(k) + ' type ' + str(types[k]), rgbcrop)
         cv2.waitKey(0)
         k += 1
 
@@ -369,10 +356,6 @@ def test_on_pannel(args):
     thermal_crop = crop_bbox(thermal, idx, pannels)[0]
 
     detect(rgb_crop, thermal_crop)
-
-    
-
-    
 
 def test_on_full(args):
 
@@ -404,15 +387,64 @@ def test_on_full(args):
 
         cv2.destroyAllWindows()
 
+def draw_rectangle(thermal_img):
+
+    def mouse_callback(event, x, y, flags, params):
+        global img
+
+        if event == cv2.EVENT_LBUTTONDOWN:
+            if len(coords) > 1:
+                coords.append((x,y))
+                print(coords)
+
+            else:
+                coords.append((x,y))
+                print(coords)
+                
+    img = np.uint8(thermal_img.copy())
+
+    cv2.namedWindow('thermal', cv2.WINDOW_NORMAL)
+    cv2.resizeWindow('thermal', 800,800)
+    cv2.imshow('thermal', img)
+
+    coords = []
+
+
+    cv2.setMouseCallback('thermal', mouse_callback)
+
+    cv2.imshow("thermal", img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+    return coords
+
+def test_interactive(args):
+
+    thermal = get_thermal(args.im_path)
+    rgb_img = cv2.imread(args.im_path, cv2.IMREAD_GRAYSCALE)
+
+    coords  = np.array(draw_rectangle(thermal))
+
+    thermal_crop = crop_cont(thermal, coords)[0]
+    cv2.imwrite('thermal_test.png', thermal_crop)
+    rgb_crop     = crop_cont(rgb_img, coords)[0]
+
+    print(thermal_crop.shape)
+    print(rgb_crop.shape)
+
+    detect(rgb_crop, thermal_crop)
+
 
 if __name__ == '__main__':
 
     args = options()
 
-    if args.use_full:
+    if args.mode == 'full':
         test_on_full(args)
-    else:
+    elif args.mode == 'pannel':
         test_on_pannel(args)
+    elif args.mode == 'interactive':
+        test_interactive(args)
 
     
     

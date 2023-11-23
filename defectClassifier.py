@@ -15,6 +15,13 @@ class DefectClassifier():
 
         self.params = params
 
+    def load(path):
+
+        with open(path, 'r') as f:
+            params = json.load(f)
+
+        return DefectClassifier(params)
+
     def local_max_filter(self, img, intensity):
 
         cpy      = img.copy()
@@ -26,15 +33,20 @@ class DefectClassifier():
         return filtered
     
     def get_classes(self):
+        
+        l = ["UNKNOWN"]
+        for def_class in self.params['criteria'].items():
+            l.append(def_class[0])
 
-        return [c[0] for c in self.params['criteria']]
+        return l
 
     def apply_local_max_filter(self, img):
 
         initial_image = img.copy()
         
         lmf0 = self.local_max_filter(initial_image, self.params['int0'])
-        for i in range(self.params['int0'] + self.params['int_step'],self.params['lms_iter'], self.params['int_step']):
+        iters = self.params['int0'] + self.params['lmf_iter']*self.params['int_step']
+        for i in range(self.params['int0'] + self.params['int_step'],iters, self.params['int_step']):
             lmfi = self.local_max_filter(initial_image, self.params['int0'] + i*self.params['int_step'])
 
             if np.count_nonzero(lmfi) == np.count_nonzero(lmf0):
@@ -55,7 +67,7 @@ class DefectClassifier():
 
         return contours, cont_mask
     
-    def calculate_neighbours(point, shape):
+    def calculate_neighbours(self, point, shape):
 
         NEIGH_X = [-1, 0, 1]
         NEIGH_Y = [-1, 0, 1]
@@ -85,7 +97,7 @@ class DefectClassifier():
         temp_proc   = np.zeros_like(thermal_crop, dtype=np.uint8)
 
         # Blob type list
-        blob_types = [self.UNKNOWN for i in range(len(contours))]
+        blob_types = ["UNKNOWN" for i in range(len(contours))]
         
         visited.fill(self.NOT_VISITED)
         blobs.fill(self.NOT_VISITED)
@@ -150,7 +162,7 @@ class DefectClassifier():
 
                     else:
                         # Sort the criteria in ascending order of upper bound
-                        criteria = self.params['criteria']
+                        criteria = list(self.params['criteria'].items())
                         criteria.sort(key = lambda x : x[1])
 
                         # Mark the whole blob to which the point belongs as the type corresponding to the

@@ -79,6 +79,7 @@ class PannelChopper():
             mask = np.zeros((h,w,1), np.uint8)
 
             unmasked_chop = image[y:y+h, x:x+w]
+            unmasked_chop = np.uint8(unmasked_chop)
 
             warped_coords = [[p[0][0] - x, p[0][1]- y] for p in coords]
             warped_coords = np.int32(warped_coords)
