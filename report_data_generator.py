@@ -131,28 +131,19 @@ class ReportDataGenerator():
                     continue
             
                 else:
-                    blobs, blob_types = self.defect_classifier.classify(np.uint8(thermal_crops[k][1]))
+                    def_type = self.defect_classifier.classify(np.uint8(thermal_crops[k][1]))
+                    if def_type != "NO DEFECT":
+                        def_idx  = self.classes.index(def_type)
+                        
+                        im2 = cv2.drawContours(im2, c[0], -1, self.cv2_colors[def_idx], 2)
+                        i += 1
 
-                    # Whatever data type
-                    idxs = [self.classes.index(b) for b in blob_types]
-                    def_type = max(idxs)
+                        if self.classes[def_idx] not in defect_count.keys():
+                            defect_count[self.classes[def_idx]] = 0
 
-                    index_def = self.classes[def_type]
+                        defect_count[self.classes[def_idx]] += 1
 
-                    print("@@@@@@@@@@@@@@@@@@@@@@@@")
-                    print("DETECTED =", blob_types)
-                    print("CALCULATED ",def_type, " BEING ", index_def)
-                    input()
-
-                    im2 = cv2.drawContours(im2, c[0], -1, self.cv2_colors[def_type], 2)
-                    i += 1
-
-                    if self.classes[def_type] not in defect_count.keys():
-                        defect_count[self.classes[def_type]] = 0
-
-                    defect_count[self.classes[def_type]] += 1
-
-                    defect_in_image[self.classes[def_type]] += 1
+                        defect_in_image[self.classes[def_idx]] += 1
 
             pth = os.path.join(self.out_dir, im[0])
 

@@ -17,12 +17,11 @@ LOW         = 1
 MEDIUM      = 2
 HIGH        = 3
 
-C_UK        = (0,47,189)
 C_LOW       = (189,156,0)
 C_MEDIUM    = (189,99,0)
 C_HIGH      = (189,0,0)
 
-BLOB_COLORS = [C_UK, C_LOW, C_MEDIUM, C_HIGH]
+BLOB_COLORS = [C_LOW, C_MEDIUM, C_HIGH]
 
 THRESHOLD   = 5
 
@@ -462,52 +461,70 @@ def draw_rectangle(thermal_img):
 
     return coords
 
-def detect2(rgb_crop, thermal_crop):
+NO_DEFECT = 0
 
-    local_mins_mask = apply_local_min_filter(thermal_crop)
+def detect2(rgb_crop, thermal_crop):
+ 
+    local_mins_mask = cv2.erode(thermal_crop, np.ones((5, 5), np.uint8), iterations = 1)
+    local_mins_mask = np.where(local_mins_mask == thermal_crop, 255, 0)
+    local_mins_mask = np.uint8(local_mins_mask)
     local_maxs_mask = apply_local_max_filter(thermal_crop)
 
-    
-    local_mins_idx = (local_mins_mask == 255).nonzero()
-    local_maxs_idx = (local_maxs_mask == 255).nonzero()
+    local_mins_idx = np.argwhere(local_mins_mask == 255)
+    local_maxs_idx = np.argwhere(local_maxs_mask == 255)
 
-    print(local_mins_idx)
-    print(local_maxs_idx)
+    cv2.namedWindow('maxes', cv2.WINDOW_NORMAL)
+    cv2.resizeWindow('maxes', 800,800)
+    maxes = np.zeros_like(thermal_crop)
+    maxes[local_maxs_mask == 255] = 255
+    cv2.imshow('maxes', np.stack([thermal_crop, thermal_crop, maxes], axis = -1))
+
+    cv2.namedWindow('mins', cv2.WINDOW_NORMAL)
+    cv2.resizeWindow('mins', 800,800)
+    mins = np.zeros_like(thermal_crop)
+    mins[local_mins_mask == 255] = 255
+    cv2.imshow('mins', np.stack([thermal_crop, thermal_crop, mins], axis = -1))
+
+    cv2.waitKey(0)  
 
     t = thermal_crop.copy()
-    t = np.int16(t)
+    t = np.int32(t)
 
-    local_mins_idx = sorted(local_mins_idx, key = lambda x: t[x[0], x[1]])
-    local_maxs_idx = sorted(local_maxs_idx, key = lambda x: t[x[0], x[1]])
+    local_mins_idx = sorted(local_mins_idx, key = lambda x: -t[x[0], x[1]])
+    local_maxs_idx = sorted(local_maxs_idx, key = lambda x: -t[x[0], x[1]])
 
     min_idx = 0
-    defect = UNKNOWN
+    max_idx = 0
+    defect = NO_DEFECT
     dist = 0
-    
-    debug_list = []
 
-    while defect != HIGH and min_idx < len(local_mins_idx):
-        
-        max_val = thermal_crop[local_maxs_idx[0][0], local_maxs_idx[0][1]]
-        min_val = thermal_crop[local_mins_idx[min_idx][0], local_mins_idx[min_idx][1]]
-        dif = max_val - min_val
-        debug_list.append((dif, max_val, min_val))
-        dist = np.sqrt((local_maxs_idx[0][0] - local_mins_idx[min_idx][0])**2 + (local_maxs_idx[0][1] - local_mins_idx[min_idx][1])**2)
+    while defect != HIGH and max_idx < len(local_maxs_idx):
+        while defect != HIGH and min_idx < len(local_mins_idx):
+            
+            if t[local_mins_idx[min_idx][0], local_mins_idx[min_idx][1]] < 23:
+                break
 
-        if dif > 20:
-            defect = HIGH
-        elif dif <= 20 and dif > 10:
-            defect = MEDIUM
-        elif dif <= 10 and dif > 5:
-            defect = LOW
-        else:
-            defect = UNKNOWN
-        
-        min_idx += 1
+            max_val = t[local_maxs_idx[max_idx][0], local_maxs_idx[max_idx][1]]
+            min_val = t[local_mins_idx[min_idx][0], local_mins_idx[min_idx][1]]
+            print("MIN VAL = ", min_val)
 
-    print(debug_list)
+            dif = max_val - min_val
+            dist = np.sqrt((local_maxs_idx[0][0] - local_mins_idx[min_idx][0])**2 + (local_maxs_idx[0][1] - local_mins_idx[min_idx][1])**2)
 
-    return defect, dist, (local_maxs_idx[0][0], local_maxs_idx[0][1]), (local_mins_idx[min_idx - 1][0], local_mins_idx[min_idx - 1][1])
+            if dif > 20:
+                defect = HIGH
+            elif dif <= 20 and dif > 10 and defect != HIGH:
+                defect = MEDIUM
+            elif dif <= 10 and dif > 5 and defect != HIGH and defect != MEDIUM:
+                defect = LOW
+            else:
+                defect = NO_DEFECT
+            
+            min_idx += 1
+
+        max_idx += 1
+
+    return defect, dist, (local_maxs_idx[max_idx - 1][0], local_maxs_idx[max_idx - 1][1]), (local_mins_idx[min_idx - 1][0], local_mins_idx[min_idx - 1][1])
 
 def test_interactive(args):
 
@@ -523,25 +540,34 @@ def test_interactive(args):
     print(thermal_crop.shape)
     print(rgb_crop.shape)
 
-    # detect2(rgb_crop, thermal_crop)
-
     defect, dist, max_loc, min_loc = detect2(rgb_crop, thermal_crop)
 
-    print(defect, " ", dist, " ", max_loc, " ", min_loc)
+    print("RESLTS ", defect, " ", dist, " ", max_loc, " ", min_loc)
 
-    cv2.namedWindow('thermal', cv2.WINDOW_NORMAL)
-    cv2.resizeWindow('thermal', 800,800)
+    if defect != NO_DEFECT:
 
-    rgb_crop = cv2.cvtColor(rgb_crop, cv2.COLOR_GRAY2BGR)
-    rgb_crop[max_loc[0], max_loc[1]][0] = 0
-    rgb_crop[max_loc[0], max_loc[1]][1] = 0
-    rgb_crop[max_loc[0], max_loc[1]][2] = 255
-    rgb_crop[min_loc[0], min_loc[1]][0] = 255
-    rgb_crop[min_loc[0], min_loc[1]][1] = 0
-    rgb_crop[min_loc[0], min_loc[1]][2] = 0
-    rgb_crop = cv2.circle(rgb_crop, max_loc, int(dist), BLOB_COLORS[defect], 1)
-    cv2.imshow('thermal', rgb_crop)
-    cv2.waitKey(0)
+        cv2.namedWindow('thermal', cv2.WINDOW_NORMAL)
+        cv2.resizeWindow('thermal', 800,800)
+
+        rgb_crop = cv2.cvtColor(rgb_crop, cv2.COLOR_GRAY2BGR)
+        thermal  = cv2.cvtColor(thermal_crop, cv2.COLOR_GRAY2BGR)
+
+        rgb_crop[max_loc[0], max_loc[1]][2] = 255
+        rgb_crop[min_loc[0], min_loc[1]][0] = 255
+
+        thermal[max_loc[0], max_loc[1]][2] = 255
+        thermal[min_loc[0], min_loc[1]][0] = 255
+        
+        rgb_crop = cv2.circle(rgb_crop, (max_loc[1], max_loc[0]), int(dist), BLOB_COLORS[defect - 1], 1)
+        thermal = cv2.circle(thermal, (max_loc[1], max_loc[0]), int(dist), BLOB_COLORS[defect - 1], 1)
+
+        cv2.imshow('thermal', np.concatenate((rgb_crop, thermal), axis = 1))
+        cv2.waitKey(0)
+    else:
+        cv2.namedWindow('No defect', cv2.WINDOW_NORMAL)
+        cv2.resizeWindow('No defect', 800,800)
+        cv2.imshow('No defect', np.concatenate((rgb_crop, thermal_crop), axis = 1))
+        cv2.waitKey(0)
 
 if __name__ == '__main__':
 

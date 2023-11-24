@@ -14,7 +14,7 @@ defect_detector = ContourClassifier({'rolling_iters':5, 'median_img':'median.png
 defect_classifier = DefectClassifier.load('weights/defect_classifier_params.json')
 
 start = time.time()
-gen = ReportDataGenerator(detector, defect_detector, defect_classifier, chopper, 'latex_imgs', test=False)
+gen = ReportDataGenerator(detector, defect_detector, defect_classifier, chopper, 'latex_imgs', test=True)
 
 report_data = gen.generate_report_data('datadron_real', show_crops=False)
 images, total_defect_count = report_data
