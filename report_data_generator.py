@@ -144,6 +144,8 @@ class ReportDataGenerator():
                         defect_count[self.classes[def_idx]] += 1
 
                         defect_in_image[self.classes[def_idx]] += 1
+                    else: 
+                        im2 = cv2.drawContours(im2, c[0], -1, (255,0,255), 2)
 
             pth = os.path.join(self.out_dir, im[0])
 

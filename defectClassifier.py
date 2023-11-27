@@ -104,11 +104,12 @@ class DefectClassifier():
         min_idx = 0
         max_idx = 0
         defect  = criteria[-1][0] 
+        defect_idx = len(criteria) - 1
         dist    = 0
 
-        print("CRITERIA = ", criteria)
-        print("LEN LOCAL MAXS = ", len(local_maxs_idx))
-        print("LEN LOCAL MINS = ", len(local_mins_idx))
+        # print("CRITERIA = ", criteria)
+        # print("LEN LOCAL MAXS = ", len(local_maxs_idx))
+        # print("LEN LOCAL MINS = ", len(local_mins_idx))
 
         while defect != criteria[0][0] and max_idx < len(local_maxs_idx):
             while defect != criteria[0][0] and min_idx < len(local_mins_idx):
@@ -122,14 +123,15 @@ class DefectClassifier():
                 dif = max_val - min_val
                 dist = np.sqrt((local_maxs_idx[0][0] - local_mins_idx[min_idx][0])**2 + (local_maxs_idx[0][1] - local_mins_idx[min_idx][1])**2)
                 
-                d_idx = 0
-                while d_idx < len(criteria) and dif < criteria[d_idx][1]:
-                    d_idx += 1
-
-                defect = criteria[d_idx - 1][0]
+                if dif > 20:
+                    defect = "HIGH"
+                elif dif <= 20 and dif > 10 and defect != "HIGH":
+                    defect = "MEDIUM"
+                elif dif <= 10 and dif > 5 and defect != "HIGH" and defect != "MEDIUM":
+                    defect = "LOW"
+                else:
+                    defect = "NO DEFECT"
                 
-                print("DIF = ", dif, " so it falls in ", criteria[d_idx - 1][0], " with dist = ", dist)
-
                 min_idx += 1
 
             max_idx += 1
