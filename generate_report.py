@@ -7,16 +7,32 @@ from pylatex import Document, Section, Subsection, Tabular, Math, TikZ, Axis, \
     Plot, Figure, Matrix, Alignat, Command, LongTable, MultiColumn, SubFigure
 from pylatex.utils import italic, NoEscape
 import time
+import argparse
 
-detector   = PannelDetector('weights/model_final_thermal.pth')
-chopper    = PannelChopper((70,100))
-defect_detector = ContourClassifier({'rolling_iters':5, 'median_img':'median.png'})
-defect_classifier = DefectClassifier.load('weights/defect_classifier_params.json')
+def options():
+    parser = argparse.ArgumentParser(description='Generate report from images')	
+    parser.add_argument('--images', type=str, default='images', help='Path to images folder')
+    parser.add_argument('--detector_weights', type=str, default='weights/model_final_thermal.pth', help='Path to detector weights')
+    parser.add_argument('--defect_classifier_params', type=str, default='weights/defect_classifier_params.json', help='Path to defect classifier params')
+    parser.add_argument('--crop_size', type=int, nargs= '+', help='Pannel Crop Size')
+    parser.add_argument('--rolling_guidance_iters ', type=int, default=5, help='Rolling Guidance Iters')
+    parser.add_argument('--median_img', type=str, default='median.png', help='Median Image')
+    parser.add_argument('--report_images', type=str, default='latex_imgs', help='Path to report images folder')
+    args = parser.parse_args()
+    print(args)
+    return args
+
+args = options()
+
+detector   = PannelDetector(args.detector_weights)
+chopper    = PannelChopper(tuple(args.crop_size))
+defect_detector = ContourClassifier({'rolling_iters':args.rolling_guidance_iters, 'median_img':args.median_img})
+defect_classifier = DefectClassifier.load(args.defect_classifier_params)
 
 start = time.time()
-gen = ReportDataGenerator(detector, defect_detector, defect_classifier, chopper, 'latex_imgs', test=False)
+gen = ReportDataGenerator(detector, defect_detector, defect_classifier, chopper, args.report_images, test=False)
 
-report_data = gen.generate_report_data('datadron_real', show_crops=False)
+report_data = gen.generate_report_data(args.images, show_crops=False)
 images, total_defect_count = report_data
 legend_path  = gen.save_legend_image()
 

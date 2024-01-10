@@ -92,6 +92,8 @@ class ReportDataGenerator():
 
         os.makedirs(self.out_dir, exist_ok=True)
 
+        total_detections = [] 
+
         for im in images:
 
             defect_in_image = { k : 0  for k in self.classes}
@@ -101,7 +103,7 @@ class ReportDataGenerator():
             detections = self.panel_detector.detect(im[1])
 
             conts = [np.array(d['segmentation'], dtype=np.int32) for d in detections]
-    
+            
             if show_detections:
                 print(len(conts))
                 print(conts[0].dtype)
@@ -112,9 +114,23 @@ class ReportDataGenerator():
                 cv2.imshow("im3", im3)
                 cv2.waitKey(0)
 
+            rgbcrops = self.chopper.efficient_chop(im[1], detections)
+            thermalcrops = self.chopper.efficient_gs_chop(im[2], detections)
+            total_detections.append((im[0], im[1], im[2], detections, rgbcrops, thermalcrops))
 
-            rgb_crops   = self.chopper.efficient_chop(im[1], detections)
-            thermal_crops = self.chopper.efficient_gs_chop(im[2], detections)
+        rgbcrops = [np.stack(d[5]) for d in total_detections]
+        median_img = np.median(rgbcrops, axis=0)
+
+        for det in total_detections:
+            detections = det[3]
+            rgb_temp = det[1]
+            themal = det[2]
+            name = det[0]
+
+            rgb_crops   = det[4]
+            thermal_crops = det[5] 
+
+            im2 = rgb_temp.copy()
 
             if show_crops:
                 for c in rgb_crops:
@@ -147,7 +163,7 @@ class ReportDataGenerator():
                     else: 
                         im2 = cv2.drawContours(im2, c[0], -1, (255,0,255), 2)
 
-            pth = os.path.join(self.out_dir, im[0])
+            pth = os.path.join(self.out_dir, name)
 
             cv2.imwrite(pth, im2)
 

@@ -5,13 +5,13 @@ import os
 import numpy as np
 import argparse
 from copy import deepcopy
+from functools import partial
 
 class ContourClassifier():
 
     def __init__(self, params):
 
         self.rolling_guidance_iters = params['rolling_iters']
-        self.median_img = cv2.imread(params['median_img'], cv2.IMREAD_GRAYSCALE)
 
         params = cv2.SimpleBlobDetector_Params()
         params.filterByArea = False
@@ -24,14 +24,14 @@ class ContourClassifier():
         params.minDistBetweenBlobs = 1
         self.detector = cv2.SimpleBlobDetector_create(params)
 
-    def transforms(self):
+    def transforms(self, median_img):
 
-        def preprocess(img):
+        def preprocess(img, median_img):
             cpy = deepcopy(img)
             cpy_g = cv2.cvtColor(cpy, cv2.COLOR_BGR2GRAY)
             # cpy_str = self.straighten_img(cpy_g)
             cpy_r = cv2.resize(cpy_g, (35,50))
-            cpy_sus_median = cv2.subtract(np.uint8(cpy_r), np.uint8(self.median_img))
+            cpy_sus_median = cv2.subtract(np.uint8(cpy_r), np.uint8(median_img))
             cpy_t = cpy_sus_median
             cpy_med = cv2.boxFilter(cpy_t, -1, (3,3))
             cpy_mul = np.multiply(np.float32(cpy_med),cpy_med/60, dtype=np.float32)
@@ -40,12 +40,12 @@ class ContourClassifier():
 
             return cpy
         
-        return preprocess
+        return partial(preprocess, median_img=median_img)
 
-    def predict_step(self, image):
+    def predict_step(self, image, median_img):
 
         im = deepcopy(image)
-        im_t = self.transforms()(im)
+        im_t = self.transforms(median_img)(im)
 
         keypoints = self.detector.detect(im_t)
         if len(keypoints) == 0:
